@@ -1,0 +1,86 @@
+﻿id,ref,group,name,status,evidence
+LEGACY-01,BR-01,Nghiệp vụ gốc,Lớp thiếu 1 học viên so với mức tối thiểu: không được mở,Passed,unit-api.txt
+LEGACY-02,BR-01,Nghiệp vụ gốc,Lớp vừa đủ mức tối thiểu: được mở,Passed,unit-api.txt
+LEGACY-03,BR-01,Nghiệp vụ gốc,Học viên chưa đóng tối thiểu 50% không được tính vào sĩ số mở lớp,Passed,unit-api.txt
+LEGACY-04,BR-02,Nghiệp vụ gốc,Đăng ký vượt sĩ số tối đa: bị từ chối,Passed,unit-api.txt
+LEGACY-05,BR-03,Nghiệp vụ gốc,Trùng phòng học: không được lưu lịch,Passed,unit-api.txt
+LEGACY-06,BR-03,Nghiệp vụ gốc,Trùng giáo viên (khác phòng): không được lưu lịch,Passed,unit-api.txt
+LEGACY-07,BR-03,Nghiệp vụ gốc,Cùng phòng nhưng khác giờ: lưu được,Passed,unit-api.txt
+LEGACY-08,BR-04,Nghiệp vụ gốc,Học viên trùng lịch giữa hai lớp: không được đăng ký,Passed,unit-api.txt
+LEGACY-09,BR-05,Nghiệp vụ gốc,"Bảo lưu khi đã học quá 50% số buổi: không hợp lệ, trạng thái giữ nguyên",Passed,unit-api.txt
+LEGACY-10,BR-05,Nghiệp vụ gốc,Bảo lưu hợp lệ: duyệt xong giữ lại học phí của các buổi chưa học,Passed,unit-api.txt
+LEGACY-11,BR-06,Nghiệp vụ gốc,Học lại sau bảo lưu: học phí bảo lưu được trừ vào lớp mới,Passed,unit-api.txt
+LEGACY-12,BR-07,Nghiệp vụ gốc,Chuyển lớp sang lớp khác trình độ: bị từ chối,Passed,unit-api.txt
+LEGACY-13,BR-07,Nghiệp vụ gốc,"Lớp đích hết chỗ: không được chuyển, đăng ký và học phí cũ giữ nguyên",Passed,unit-api.txt
+LEGACY-14,BR-08,Nghiệp vụ gốc,Chuyển sang lớp rẻ hơn: phần chênh lệch cộng vào số dư học viên,Passed,unit-api.txt
+LEGACY-15,BR-08,Nghiệp vụ gốc,Chuyển sang lớp đắt hơn: học viên còn phải đóng thêm phần chênh lệch,Passed,unit-api.txt
+LEGACY-16,BR-09,Nghiệp vụ gốc,"Học bù: chỉ khi vắng, cùng khóa, lớp khác; tối đa số buổi quy định",Passed,unit-api.txt
+LEGACY-17,NFR-01,Nghiệp vụ gốc,Giáo viên không có quyền duyệt yêu cầu,Passed,unit-api.txt
+LEGACY-18,NFR-01,Nghiệp vụ gốc,Kế toán không được tạo lớp / giáo viên không được ghi danh,Passed,unit-api.txt
+LEGACY-19,FR-10,Nghiệp vụ gốc,Thu học phí: không vượt quá số còn nợ; đủ 50% thì xác nhận chỗ,Passed,unit-api.txt
+LEGACY-20,FR-11,Nghiệp vụ gốc,"Điểm danh: giáo viên chỉ điểm danh buổi của mình, và không điểm danh buổi tương lai",Passed,unit-api.txt
+LEGACY-21,FR-12,Nghiệp vụ gốc,Sửa thông tin lớp Nháp: đổi khóa học thì lịch cũ bị xóa; lớp đã mở thì không sửa được,Passed,unit-api.txt
+LEGACY-22,FR-12,Nghiệp vụ gốc,Xóa lớp: lớp Nháp xóa được; lớp đã có đăng ký hoặc đang mở thì bị từ chối,Passed,unit-api.txt
+LEGACY-23,FR-13,Nghiệp vụ gốc,"Tài khoản nhân viên: thêm, trùng tên đăng nhập, không xóa mình / quản lý cuối cùng",Passed,unit-api.txt
+API01,API01,API/DEV,public không nhận dữ liệu học viên/tài khoản/phiếu thu,Passed,unit-api.txt
+API02,API02,API/DEV,"đăng nhập thật, cookie HttpOnly; không trả mật khẩu/hash",Passed,unit-api.txt
+API03,API03,API/DEV,không thể giả vai trò hoặc bỏ CSRF để thu tiền,Passed,unit-api.txt
+API04,API04,API/DEV,"giáo viên chỉ xem buổi mình dạy, ẩn số dư/thu phí",Passed,unit-api.txt
+API05,API05,API/DEV,"hai phiên đọc cùng dữ liệu, stale revision bị từ chối không ghi đè",Passed,unit-api.txt
+API06,API06,API/DEV,retry cùng requestId lập phiếu đúng một lần; đổi nội dung bị chặn,Passed,unit-api.txt
+API07,API07,API/DEV,"lỗi ghi SQLite rollback, không báo thành công và không tăng revision",Passed,unit-api.txt
+API08,API08,API/DEV,backup không có hash; restore thiếu bảng/đứt liên kết rollback,Passed,unit-api.txt
+API09,API09,API/DEV,trạng thái thực sự được lưu khi mở lại SQLite,Passed,unit-api.txt
+API10,API10,API/DEV,"lead public kiểm tra đầu vào, nhân viên ghi danh đọc được cùng máy chủ",Passed,unit-api.txt
+API11,API11,API/DEV,"đổi mật khẩu kiểm tra mật khẩu cũ, hủy các phiên khác, logout thật",Passed,unit-api.txt
+API12,API12,API/DEV,"Origin ngoài bị chặn, gọi action nội bộ không được phép",Passed,unit-api.txt
+API13,API13,API/DEV,reset demo giữ tài khoản và giáo viên đã thêm,Passed,unit-api.txt
+API14,API14,API/DEV,"reset từ phiên cũ bị chặn, không xóa cập nhật mới",Passed,unit-api.txt
+API15,API15,API/DEV,"JSON null/mảng/primitive và backup thiếu db trả lỗi đầu vào, không lỗi 500",Passed,unit-api.txt
+API16,API16,API/DEV,giới hạn đăng nhập dùng chung khóa khi đổi hoa/thường và khoảng trắng,Passed,unit-api.txt
+DEV01,DEV01,API/DEV,"một lệnh npm run dev chạy giao diện, API và đăng nhập qua Vite proxy",Passed,unit-api.txt
+B01,B01,Hồi quy nghiệp vụ,seed hợp lệ ở mọi ngày của năm 2026,Passed,unit-api.txt
+B02,B02,Hồi quy nghiệp vụ,đổi lịch từ chối xung đột học viên và rollback,Passed,unit-api.txt
+B03/B04,B03/B04,Hồi quy nghiệp vụ,chặn kết thúc sớm; lớp đủ buổi vẫn thu được nợ,Passed,unit-api.txt
+B05,B05,Hồi quy nghiệp vụ,không điểm danh lớp Mở đăng ký dù đã đủ học phí,Passed,unit-api.txt
+B06,B06,Hồi quy nghiệp vụ,chuyển lớp không vượt kiểm tra cùng khóa/đợt hoặc học viên ngừng,Passed,unit-api.txt
+B07,B07,Hồi quy nghiệp vụ,hai yêu cầu học bù khác lớp không được trùng giờ,Passed,unit-api.txt
+B08,B08,Hồi quy nghiệp vụ,hai học viên được xin học bù cùng một buổi vắng,Passed,unit-api.txt
+B09,B09,Hồi quy nghiệp vụ,lịch sử điểm danh giữ nguyên sau chuyển; người mới không xuất hiện trước ghi danh,Passed,unit-api.txt
+B10,B10,Hồi quy nghiệp vụ,"mã lớp không trùng sau xóa, giữ nguyên khi sửa cùng nhóm",Passed,unit-api.txt
+B11,B11,Hồi quy nghiệp vụ,bảo lưu hết hạn suy ra thống nhất; học lại bị chặn không sửa dữ liệu,Passed,unit-api.txt
+B12,B12,Hồi quy nghiệp vụ,"service chặn giờ, ngày, weekday, tiền thập phân và hình thức giả",Passed,unit-api.txt
+B18/B19,B18/B19,Hồi quy nghiệp vụ,"đổi phòng qua chi nhánh, phí khóa đã dùng, tên toàn khoảng trắng đều bị chặn",Passed,unit-api.txt
+C01,C01,Hồi quy nghiệp vụ,hết hạn giữ chỗ trả tiền/giải phóng chỗ đúng một lần,Passed,unit-api.txt
+C02,C02,Hồi quy nghiệp vụ,bảo lưu trả một phần phải khấu trừ học phí đã sử dụng,Passed,unit-api.txt
+C03,C03,Hồi quy nghiệp vụ,"hủy cá nhân, hoàn số dư có nhật ký; không hoàn hai lần vượt số dư",Passed,unit-api.txt
+C04,C04,Hồi quy nghiệp vụ,"hủy phiếu thu cập nhật nợ, giữ nguyên chứng từ; chỉ hủy một lần",Passed,unit-api.txt
+C05,C05,Hồi quy nghiệp vụ,"đổi một buổi giữ ID/lưu lịch sử, chặn trùng tài nguyên",Passed,unit-api.txt
+C06,C06,Hồi quy nghiệp vụ,cộng tháng chốt ngày cuối tháng hợp lệ,Passed,unit-api.txt
+UI01,UI01,Chromium,"Trang giới thiệu, palette thống nhất và mobile không tràn ngang",Passed,browser-results.json
+UI02,UI02,Chromium,"Đăng nhập sai, đăng nhập 5 vai trò và đăng xuất thật",Passed,browser-results.json
+P-quanly,P-quanly,Chromium,Mở toàn bộ trang được phép: quanly,Passed,browser-results.json
+P-ghidanh,P-ghidanh,Chromium,Mở toàn bộ trang được phép: ghidanh,Passed,browser-results.json
+P-ketoan,P-ketoan,Chromium,Mở toàn bộ trang được phép: ketoan,Passed,browser-results.json
+P-gv1,P-gv1,Chromium,Mở toàn bộ trang được phép: gv1,Passed,browser-results.json
+UI03,UI03,Chromium,Quản trị desktop/mobile; giáo viên URL nhân viên bị chặn,Passed,browser-results.json
+UI04,UI04,Chromium,"CRUD học viên qua form, khoảng trắng bị chặn và hủy dialog không ghi dữ liệu",Passed,browser-results.json
+UI05,UI05,Chromium,Tạo lớp → xếp lịch → mở đăng ký → ghi danh qua web,Passed,browser-results.json
+UI06,UI06,Chromium,"Thu phí từ kế toán, không khóa khoản nợ lớp hoàn thành",Passed,browser-results.json
+UI07,UI07,Chromium,Nhân viên mới được lưu backend và đăng nhập bằng mật khẩu mới,Passed,browser-results.json
+UI08,UI08,Chromium,Gửi tư vấn từ public hiển thị cho nhân viên ghi danh,Passed,browser-results.json
+UI09,UI09,Chromium,Duyệt chuyển lớp giữ lịch sử; bảo lưu và học lại dùng tín dụng một lần,Passed,browser-results.json
+UI10,UI10,Chromium,Điểm danh thật chỉ liệt kê lớp chạy; chỉnh sửa buổi giữ lịch sử,Passed,browser-results.json
+UI11,UI11,Chromium,"Hai tab sửa: tab cũ nhận lỗi xung đột, không báo đã lưu",Passed,browser-results.json
+UI12,UI12,Chromium,Sao lưu và khôi phục JSON qua giao diện,Passed,browser-results.json
+UI14,UI14,Chromium,"Học bù cùng buổi vắng của hai học viên: form không ẩn nhầm, duyệt và điểm danh học bù",Passed,browser-results.json
+UI15,UI15,Chromium,Hủy đăng ký cá nhân và hoàn số dư qua web có sổ chi,Passed,browser-results.json
+UI16,UI16,Chromium,Hủy phiếu thu sai qua web giữ chứng từ và khôi phục nợ,Passed,browser-results.json
+UI17,UI17,Chromium,Đổi mật khẩu tại sidebar xác thực với backend,Passed,browser-results.json
+UI18,UI18,Chromium,Hủy lớp chưa khai giảng trả tiền vào số dư đúng một lần,Passed,browser-results.json
+UI19,UI19,Chromium,Origin HTTP không secure vẫn lưu dữ liệu và hiển thị toast (proxy tới backend thật),Passed,browser-results.json
+UI20,UI20,Chromium,Mất phản hồi thu phí rồi làm mới: retry không lập thêm phiếu,Passed,browser-results.json
+UI21,UI21,Chromium,Phản hồi polling cũ không xóa dữ liệu vừa lưu trên màn hình,Passed,browser-results.json
+UI22,UI22,Chromium,Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất,Passed,browser-results.json; browser-results-selected.json
+UI23,UI23,Chromium,Mất kết nối khi polling có thông báo và kết nối lại xóa thông báo,Passed,browser-results.json
+UI13,UI13,Chromium,"Màn hình khóa học rỗng vẫn hiển thị, dữ liệu trình duyệt cũ không phá trang",Passed,browser-results.json

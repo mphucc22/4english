@@ -1,0 +1,75 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> abc-english@2.1.0 test
+> node run-tests.js && node --test tests/*.test.js
+
+PASS BR-01 Lớp thiếu 1 học viên so với mức tối thiểu: không được mở
+PASS BR-01 Lớp vừa đủ mức tối thiểu: được mở
+PASS BR-01 Học viên chưa đóng tối thiểu 50% không được tính vào sĩ số mở lớp
+PASS BR-02 Đăng ký vượt sĩ số tối đa: bị từ chối
+PASS BR-03 Trùng phòng học: không được lưu lịch
+PASS BR-03 Trùng giáo viên (khác phòng): không được lưu lịch
+PASS BR-03 Cùng phòng nhưng khác giờ: lưu được
+PASS BR-04 Học viên trùng lịch giữa hai lớp: không được đăng ký
+PASS BR-05 Bảo lưu khi đã học quá 50% số buổi: không hợp lệ, trạng thái giữ nguyên
+PASS BR-05 Bảo lưu hợp lệ: duyệt xong giữ lại học phí của các buổi chưa học
+PASS BR-06 Học lại sau bảo lưu: học phí bảo lưu được trừ vào lớp mới
+PASS BR-07 Chuyển lớp sang lớp khác trình độ: bị từ chối
+PASS BR-07 Lớp đích hết chỗ: không được chuyển, đăng ký và học phí cũ giữ nguyên
+PASS BR-08 Chuyển sang lớp rẻ hơn: phần chênh lệch cộng vào số dư học viên
+PASS BR-08 Chuyển sang lớp đắt hơn: học viên còn phải đóng thêm phần chênh lệch
+PASS BR-09 Học bù: chỉ khi vắng, cùng khóa, lớp khác; tối đa số buổi quy định
+PASS NFR-01 Giáo viên không có quyền duyệt yêu cầu
+PASS NFR-01 Kế toán không được tạo lớp / giáo viên không được ghi danh
+PASS FR-10 Thu học phí: không vượt quá số còn nợ; đủ 50% thì xác nhận chỗ
+PASS FR-11 Điểm danh: giáo viên chỉ điểm danh buổi của mình, và không điểm danh buổi tương lai
+PASS FR-12 Sửa thông tin lớp Nháp: đổi khóa học thì lịch cũ bị xóa; lớp đã mở thì không sửa được
+PASS FR-12 Xóa lớp: lớp Nháp xóa được; lớp đã có đăng ký hoặc đang mở thì bị từ chối
+PASS FR-13 Tài khoản nhân viên: thêm, trùng tên đăng nhập, không xóa mình / quản lý cuối cùng
+
+Seed OK: 6 lớp, 29 đăng ký, 2 yêu cầu
+23/23 ca đạt
+✔ API01: public không nhận dữ liệu học viên/tài khoản/phiếu thu (34.079873ms)
+✔ API02: đăng nhập thật, cookie HttpOnly; không trả mật khẩu/hash (154.000267ms)
+✔ API03: không thể giả vai trò hoặc bỏ CSRF để thu tiền (131.444908ms)
+✔ API04: giáo viên chỉ xem buổi mình dạy, ẩn số dư/thu phí (57.612492ms)
+✔ API05: hai phiên đọc cùng dữ liệu, stale revision bị từ chối không ghi đè (137.295624ms)
+✔ API06: retry cùng requestId lập phiếu đúng một lần; đổi nội dung bị chặn (87.154844ms)
+API: simulated write failure
+✔ API07: lỗi ghi SQLite rollback, không báo thành công và không tăng revision (66.57525ms)
+✔ API08: backup không có hash; restore thiếu bảng/đứt liên kết rollback (92.701561ms)
+✔ API09: trạng thái thực sự được lưu khi mở lại SQLite (6.305205ms)
+✔ API10: lead public kiểm tra đầu vào, nhân viên ghi danh đọc được cùng máy chủ (84.216349ms)
+✔ API11: đổi mật khẩu kiểm tra mật khẩu cũ, hủy các phiên khác, logout thật (367.817564ms)
+✔ API12: Origin ngoài bị chặn, gọi action nội bộ không được phép (54.533367ms)
+✔ API13: reset demo giữ tài khoản và giáo viên đã thêm (227.233547ms)
+✔ API14: reset từ phiên cũ bị chặn, không xóa cập nhật mới (77.010427ms)
+✔ API15: JSON null/mảng/primitive và backup thiếu db trả lỗi đầu vào, không lỗi 500 (88.312952ms)
+✔ API16: giới hạn đăng nhập dùng chung khóa khi đổi hoa/thường và khoảng trắng (31.667491ms)
+✔ DEV01: một lệnh npm run dev chạy giao diện, API và đăng nhập qua Vite proxy (1167.101085ms)
+✔ B01: seed hợp lệ ở mọi ngày của năm 2026 (7946.372431ms)
+✔ B02: đổi lịch từ chối xung đột học viên và rollback (4.876217ms)
+✔ B03/B04: chặn kết thúc sớm; lớp đủ buổi vẫn thu được nợ (3.811762ms)
+✔ B05: không điểm danh lớp Mở đăng ký dù đã đủ học phí (2.842993ms)
+✔ B06: chuyển lớp không vượt kiểm tra cùng khóa/đợt hoặc học viên ngừng (3.059421ms)
+✔ B07: hai yêu cầu học bù khác lớp không được trùng giờ (11.94868ms)
+✔ B08: hai học viên được xin học bù cùng một buổi vắng (12.600454ms)
+✔ B09: lịch sử điểm danh giữ nguyên sau chuyển; người mới không xuất hiện trước ghi danh (22.63102ms)
+✔ B10: mã lớp không trùng sau xóa, giữ nguyên khi sửa cùng nhóm (0.898732ms)
+✔ B11: bảo lưu hết hạn suy ra thống nhất; học lại bị chặn không sửa dữ liệu (6.553809ms)
+✔ B12: service chặn giờ, ngày, weekday, tiền thập phân và hình thức giả (2.442343ms)
+✔ B18/B19: đổi phòng qua chi nhánh, phí khóa đã dùng, tên toàn khoảng trắng đều bị chặn (2.285311ms)
+✔ C01: hết hạn giữ chỗ trả tiền/giải phóng chỗ đúng một lần (1.59469ms)
+✔ C02: bảo lưu trả một phần phải khấu trừ học phí đã sử dụng (4.528964ms)
+✔ C03: hủy cá nhân, hoàn số dư có nhật ký; không hoàn hai lần vượt số dư (2.743691ms)
+✔ C04: hủy phiếu thu cập nhật nợ, giữ nguyên chứng từ; chỉ hủy một lần (2.09301ms)
+✔ C05: đổi một buổi giữ ID/lưu lịch sử, chặn trùng tài nguyên (3.189564ms)
+✔ C06: cộng tháng chốt ngày cuối tháng hợp lệ (0.617353ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8384.336458

@@ -1,0 +1,144 @@
+{
+  "at": "2026-10-05T04:05:22.754Z",
+  "browser": "Chromium",
+  "results": [
+    {
+      "id": "UI01",
+      "name": "Trang giới thiệu, palette thống nhất và mobile không tràn ngang",
+      "status": "Passed"
+    },
+    {
+      "id": "UI02",
+      "name": "Đăng nhập sai, đăng nhập 5 vai trò và đăng xuất thật",
+      "status": "Passed"
+    },
+    {
+      "id": "P-quanly",
+      "name": "Mở toàn bộ trang được phép: quanly",
+      "status": "Passed"
+    },
+    {
+      "id": "P-ghidanh",
+      "name": "Mở toàn bộ trang được phép: ghidanh",
+      "status": "Passed"
+    },
+    {
+      "id": "P-ketoan",
+      "name": "Mở toàn bộ trang được phép: ketoan",
+      "status": "Passed"
+    },
+    {
+      "id": "P-gv1",
+      "name": "Mở toàn bộ trang được phép: gv1",
+      "status": "Passed"
+    },
+    {
+      "id": "UI03",
+      "name": "Quản trị desktop/mobile; giáo viên URL nhân viên bị chặn",
+      "status": "Passed"
+    },
+    {
+      "id": "UI04",
+      "name": "CRUD học viên qua form, khoảng trắng bị chặn và hủy dialog không ghi dữ liệu",
+      "status": "Passed"
+    },
+    {
+      "id": "UI05",
+      "name": "Tạo lớp → xếp lịch → mở đăng ký → ghi danh qua web",
+      "status": "Passed"
+    },
+    {
+      "id": "UI06",
+      "name": "Thu phí từ kế toán, không khóa khoản nợ lớp hoàn thành",
+      "status": "Passed"
+    },
+    {
+      "id": "UI07",
+      "name": "Nhân viên mới được lưu backend và đăng nhập bằng mật khẩu mới",
+      "status": "Passed"
+    },
+    {
+      "id": "UI08",
+      "name": "Gửi tư vấn từ public hiển thị cho nhân viên ghi danh",
+      "status": "Passed"
+    },
+    {
+      "id": "UI09",
+      "name": "Duyệt chuyển lớp giữ lịch sử; bảo lưu và học lại dùng tín dụng một lần",
+      "status": "Passed"
+    },
+    {
+      "id": "UI10",
+      "name": "Điểm danh thật chỉ liệt kê lớp chạy; chỉnh sửa buổi giữ lịch sử",
+      "status": "Passed"
+    },
+    {
+      "id": "UI11",
+      "name": "Hai tab sửa: tab cũ nhận lỗi xung đột, không báo đã lưu",
+      "status": "Passed"
+    },
+    {
+      "id": "UI12",
+      "name": "Sao lưu và khôi phục JSON qua giao diện",
+      "status": "Passed"
+    },
+    {
+      "id": "UI14",
+      "name": "Học bù cùng buổi vắng của hai học viên: form không ẩn nhầm, duyệt và điểm danh học bù",
+      "status": "Passed"
+    },
+    {
+      "id": "UI15",
+      "name": "Hủy đăng ký cá nhân và hoàn số dư qua web có sổ chi",
+      "status": "Passed"
+    },
+    {
+      "id": "UI16",
+      "name": "Hủy phiếu thu sai qua web giữ chứng từ và khôi phục nợ",
+      "status": "Passed"
+    },
+    {
+      "id": "UI17",
+      "name": "Đổi mật khẩu tại sidebar xác thực với backend",
+      "status": "Passed"
+    },
+    {
+      "id": "UI18",
+      "name": "Hủy lớp chưa khai giảng trả tiền vào số dư đúng một lần",
+      "status": "Passed"
+    },
+    {
+      "id": "UI19",
+      "name": "Origin HTTP không secure vẫn lưu dữ liệu và hiển thị toast (proxy tới backend thật)",
+      "status": "Passed"
+    },
+    {
+      "id": "UI20",
+      "name": "Mất phản hồi thu phí rồi làm mới: retry không lập thêm phiếu",
+      "status": "Passed"
+    },
+    {
+      "id": "UI21",
+      "name": "Phản hồi polling cũ không xóa dữ liệu vừa lưu trên màn hình",
+      "status": "Passed"
+    },
+    {
+      "id": "UI22",
+      "name": "Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất",
+      "status": "Passed"
+    },
+    {
+      "id": "UI23",
+      "name": "Mất kết nối khi polling có thông báo và kết nối lại xóa thông báo",
+      "status": "Passed"
+    },
+    {
+      "id": "UI13",
+      "name": "Màn hình khóa học rỗng vẫn hiển thị, dữ liệu trình duyệt cũ không phá trang",
+      "status": "Passed"
+    }
+  ],
+  "total": 27,
+  "passed": 27,
+  "failed": 0
+}

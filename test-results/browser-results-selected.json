@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-05T04:05:46.151Z",
+  "browser": "Chromium",
+  "results": [
+    {
+      "id": "UI22",
+      "name": "Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất",
+      "status": "Passed"
+    }
+  ],
+  "total": 1,
+  "passed": 1,
+  "failed": 0
+}

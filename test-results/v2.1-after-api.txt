@@ -1,0 +1,25 @@
+✔ API01: public không nhận dữ liệu học viên/tài khoản/phiếu thu (27.68929ms)
+✔ API02: đăng nhập thật, cookie HttpOnly; không trả mật khẩu/hash (112.727642ms)
+✔ API03: không thể giả vai trò hoặc bỏ CSRF để thu tiền (118.546547ms)
+✔ API04: giáo viên chỉ xem buổi mình dạy, ẩn số dư/thu phí (53.152914ms)
+✔ API05: hai phiên đọc cùng dữ liệu, stale revision bị từ chối không ghi đè (113.508516ms)
+✔ API06: retry cùng requestId lập phiếu đúng một lần; đổi nội dung bị chặn (72.009452ms)
+API: simulated write failure
+✔ API07: lỗi ghi SQLite rollback, không báo thành công và không tăng revision (63.041645ms)
+✔ API08: backup không có hash; restore thiếu bảng/đứt liên kết rollback (98.417519ms)
+✔ API09: trạng thái thực sự được lưu khi mở lại SQLite (5.374409ms)
+✔ API10: lead public kiểm tra đầu vào, nhân viên ghi danh đọc được cùng máy chủ (59.176819ms)
+✔ API11: đổi mật khẩu kiểm tra mật khẩu cũ, hủy các phiên khác, logout thật (346.965031ms)
+✔ API12: Origin ngoài bị chặn, gọi action nội bộ không được phép (54.445049ms)
+✔ API13: reset demo giữ tài khoản và giáo viên đã thêm (183.749715ms)
+✔ API14: reset từ phiên cũ bị chặn, không xóa cập nhật mới (62.822861ms)
+✔ API15: JSON null/mảng/primitive và backup thiếu db trả lỗi đầu vào, không lỗi 500 (90.360301ms)
+✔ API16: giới hạn đăng nhập dùng chung khóa khi đổi hoa/thường và khoảng trắng (28.585117ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1873.699295

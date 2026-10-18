@@ -1,0 +1,13 @@
+FAIL UI20 Mất phản hồi thu phí rồi làm mới: retry không lập thêm phiếu Expected values to be strictly equal:
+
+28 !== 27
+
+FAIL UI21 Phản hồi polling cũ không xóa dữ liệu vừa lưu trên màn hình Expected values to be strictly equal:
+
+0 !== 1
+
+FAIL UI22 Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất Expected values to be strictly equal:
+
+0 !== 1
+
+0/3 kiểm thử trình duyệt đạt

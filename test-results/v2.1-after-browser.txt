@@ -1,0 +1,5 @@
+PASS UI20 Mất phản hồi thu phí rồi làm mới: retry không lập thêm phiếu
+PASS UI21 Phản hồi polling cũ không xóa dữ liệu vừa lưu trên màn hình
+PASS UI22 Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất
+PASS UI23 Mất kết nối khi polling có thông báo và kết nối lại xóa thông báo
+4/4 kiểm thử trình duyệt đạt

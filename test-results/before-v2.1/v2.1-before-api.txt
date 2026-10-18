@@ -1,0 +1,82 @@
+✔ API01: public không nhận dữ liệu học viên/tài khoản/phiếu thu (38.030643ms)
+✔ API02: đăng nhập thật, cookie HttpOnly; không trả mật khẩu/hash (113.199827ms)
+✔ API03: không thể giả vai trò hoặc bỏ CSRF để thu tiền (119.242142ms)
+✔ API04: giáo viên chỉ xem buổi mình dạy, ẩn số dư/thu phí (49.856884ms)
+✔ API05: hai phiên đọc cùng dữ liệu, stale revision bị từ chối không ghi đè (119.619671ms)
+✔ API06: retry cùng requestId lập phiếu đúng một lần; đổi nội dung bị chặn (63.826222ms)
+API: simulated write failure
+✔ API07: lỗi ghi SQLite rollback, không báo thành công và không tăng revision (70.428722ms)
+✔ API08: backup không có hash; restore thiếu bảng/đứt liên kết rollback (81.832922ms)
+✔ API09: trạng thái thực sự được lưu khi mở lại SQLite (5.63308ms)
+✔ API10: lead public kiểm tra đầu vào, nhân viên ghi danh đọc được cùng máy chủ (58.374224ms)
+✔ API11: đổi mật khẩu kiểm tra mật khẩu cũ, hủy các phiên khác, logout thật (338.631316ms)
+✔ API12: Origin ngoài bị chặn, gọi action nội bộ không được phép (56.460603ms)
+✔ API13: reset demo giữ tài khoản và giáo viên đã thêm (187.112855ms)
+✖ API14: reset từ phiên cũ bị chặn, không xóa cập nhật mới (77.776038ms)
+API: Cannot read properties of null (reading 'username')
+✖ API15: JSON null/mảng/primitive và backup thiếu db trả lỗi đầu vào, không lỗi 500 (52.021286ms)
+✖ API16: giới hạn đăng nhập dùng chung khóa khi đổi hoa/thường và khoảng trắng (38.130734ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 13
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1827.345301
+
+✖ failing tests:
+
+test at tests/api.test.js:337:1
+✖ API14: reset từ phiên cũ bị chặn, không xóa cập nhật mới (77.776038ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 409
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/50a87367d013/abc-v2.1/ABC-English-Complete/tests/api.test.js:342:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 409,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/api.test.js:346:1
+✖ API15: JSON null/mảng/primitive và backup thiếu db trả lỗi đầu vào, không lỗi 500 (52.021286ms)
+  AssertionError [ERR_ASSERTION]: null
+  
+  500 !== 422
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/50a87367d013/abc-v2.1/ABC-English-Complete/tests/api.test.js:351:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 422,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/api.test.js:360:1
+✖ API16: giới hạn đăng nhập dùng chung khóa khi đổi hoa/thường và khoảng trắng (38.130734ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  401 !== 429
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/50a87367d013/abc-v2.1/ABC-English-Complete/tests/api.test.js:366:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 401,
+    expected: 429,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

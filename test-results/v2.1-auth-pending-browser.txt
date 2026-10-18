@@ -1,0 +1,2 @@
+PASS UI22 Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất
+1/1 kiểm thử trình duyệt đạt

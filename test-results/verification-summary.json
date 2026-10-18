@@ -1,0 +1,41 @@
+{
+  "base_commit": "48407496124d5fe4e44f332259b43665f02a2de3",
+  "version": "2.1.0",
+  "at": "2026-10-05T04:05:22.754Z",
+  "legacy": {
+    "passed": 23,
+    "failed": 0
+  },
+  "regression_api_dev": {
+    "passed": 35,
+    "failed": 0
+  },
+  "browser": {
+    "passed": 27,
+    "failed": 0,
+    "engine": "Chromium 153.0.8010.0"
+  },
+  "seed_boundary_days": 365,
+  "npm_audit_vulnerabilities": 0,
+  "build": "Passed",
+  "environment": "Linux / Node 24.19.0 / Chromium headless",
+  "windows_tested": false,
+  "lan_multiple_machines_tested": false,
+  "http_insecure_origin_tested": "Proxy tới backend thật; chưa thử hai máy LAN",
+  "new_cases_v21": {
+    "api": 3,
+    "browser": 4
+  },
+  "baseline_reproduced_failures": {
+    "api": 3,
+    "browser": 3,
+    "evidence": "before-v2.1/"
+  },
+  "focused_recheck": {
+    "case": "UI22",
+    "passed": 1,
+    "failed": 0,
+    "at": "2026-10-05T04:05:46.151Z",
+    "counted_again": false
+  }
+}

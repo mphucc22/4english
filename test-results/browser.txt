@@ -1,0 +1,33 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> abc-english@2.1.0 test:browser
+> node tests/browser-run.js
+
+PASS UI01 Trang giới thiệu, palette thống nhất và mobile không tràn ngang
+PASS UI02 Đăng nhập sai, đăng nhập 5 vai trò và đăng xuất thật
+PASS P-quanly Mở toàn bộ trang được phép: quanly
+PASS P-ghidanh Mở toàn bộ trang được phép: ghidanh
+PASS P-ketoan Mở toàn bộ trang được phép: ketoan
+PASS P-gv1 Mở toàn bộ trang được phép: gv1
+PASS UI03 Quản trị desktop/mobile; giáo viên URL nhân viên bị chặn
+PASS UI04 CRUD học viên qua form, khoảng trắng bị chặn và hủy dialog không ghi dữ liệu
+PASS UI05 Tạo lớp → xếp lịch → mở đăng ký → ghi danh qua web
+PASS UI06 Thu phí từ kế toán, không khóa khoản nợ lớp hoàn thành
+PASS UI07 Nhân viên mới được lưu backend và đăng nhập bằng mật khẩu mới
+PASS UI08 Gửi tư vấn từ public hiển thị cho nhân viên ghi danh
+PASS UI09 Duyệt chuyển lớp giữ lịch sử; bảo lưu và học lại dùng tín dụng một lần
+PASS UI10 Điểm danh thật chỉ liệt kê lớp chạy; chỉnh sửa buổi giữ lịch sử
+PASS UI11 Hai tab sửa: tab cũ nhận lỗi xung đột, không báo đã lưu
+PASS UI12 Sao lưu và khôi phục JSON qua giao diện
+PASS UI14 Học bù cùng buổi vắng của hai học viên: form không ẩn nhầm, duyệt và điểm danh học bù
+PASS UI15 Hủy đăng ký cá nhân và hoàn số dư qua web có sổ chi
+PASS UI16 Hủy phiếu thu sai qua web giữ chứng từ và khôi phục nợ
+PASS UI17 Đổi mật khẩu tại sidebar xác thực với backend
+PASS UI18 Hủy lớp chưa khai giảng trả tiền vào số dư đúng một lần
+PASS UI19 Origin HTTP không secure vẫn lưu dữ liệu và hiển thị toast (proxy tới backend thật)
+PASS UI20 Mất phản hồi thu phí rồi làm mới: retry không lập thêm phiếu
+PASS UI21 Phản hồi polling cũ không xóa dữ liệu vừa lưu trên màn hình
+PASS UI22 Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất
+PASS UI23 Mất kết nối khi polling có thông báo và kết nối lại xóa thông báo
+PASS UI13 Màn hình khóa học rỗng vẫn hiển thị, dữ liệu trình duyệt cũ không phá trang
+27/27 kiểm thử trình duyệt đạt
