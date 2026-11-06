@@ -1,3 +1,5 @@
+import { googleMapsEmbedUrl } from "./branch-public.js";
+
 /** CRUD danh mục được kiểm tra trên service, không gán dữ liệu trực tiếp từ UI. */
 export function installMasterRules(R, U, fail) {
   const required = (p, key, label = key) => {
@@ -62,13 +64,47 @@ export function installMasterRules(R, U, fail) {
           fail("Trạng thái không hợp lệ.");
       }
       if (col === "students") {
+        const branchId = p.branchId || old?.branchId || "";
+        if (branchId) R.must(db, "branches", branchId, "cơ sở quản lý học viên");
+        if (u.role !== "manager" && !branchId)
+          fail("Chọn cơ sở quản lý hồ sơ học viên.");
+        d.branchId = branchId || null;
         d.dob = p.dob || "";
         if (d.dob && (!R.validDate(d.dob) || d.dob > U.today()))
           fail("Ngày sinh không hợp lệ.");
         d.level = String(p.level || "A1").trim();
       }
-      if (col === "teachers") d.specialty = String(p.specialty || "").trim();
-      if (col === "branches") d.address = required(p, "address", "địa chỉ");
+      if (col === "teachers") {
+        d.specialty = String(p.specialty || "").trim();
+        const requestedBranches = p.branchIds ?? old?.branchIds;
+        if (!Array.isArray(requestedBranches) || !requestedBranches.length ||
+          requestedBranches.some((branchId) => typeof branchId !== "string" || !R.by(db, "branches", branchId)))
+          fail("Chọn ít nhất một cơ sở công tác hợp lệ cho giáo viên.");
+        d.branchIds = [...new Set(requestedBranches)];
+        if (old) {
+          const future = db.sessions.filter((session) => {
+            const klass = R.by(db, "classes", session.classId);
+            return session.teacherId === old.id && !session.held && session.date >= U.today() &&
+              klass && ["Nháp", "Mở đăng ký", "Đang học"].includes(klass.status);
+          });
+          if ((d.status === "Nghỉ" && future.length) ||
+            future.some((session) => !d.branchIds.includes(R.by(db, "classes", session.classId).branchId)))
+            fail("Giáo viên còn buổi dạy sắp tới tại cơ sở bị thay đổi. Hãy phân công lại các buổi đó trước khi cho nghỉ hoặc bỏ cơ sở.");
+        }
+      }
+      if (col === "branches") {
+        d.address = required(p, "address", "địa chỉ");
+        const openingHours = p.openingHours ?? old?.openingHours ?? "";
+        const mapEmbedUrl = p.mapEmbedUrl ?? old?.mapEmbedUrl ?? "";
+        if (typeof openingHours !== "string" || openingHours.trim().length > 160)
+          fail("Giờ hoạt động phải là văn bản không quá 160 ký tự.");
+        if (typeof mapEmbedUrl !== "string" || mapEmbedUrl.length > 4096)
+          fail("URL nhúng Google Maps không hợp lệ hoặc vượt quá 4096 ký tự.");
+        d.openingHours = openingHours.trim();
+        d.mapEmbedUrl = mapEmbedUrl.trim() ? googleMapsEmbedUrl(mapEmbedUrl) : "";
+        if (mapEmbedUrl.trim() && !d.mapEmbedUrl)
+          fail("Dán URL src từ Google Maps → Chia sẻ → Nhúng bản đồ, bắt đầu bằng https://www.google.com/maps/embed.");
+      }
       if (col === "rooms") {
         d.branchId = R.must(db, "branches", p.branchId, "chi nhánh").id;
         d.capacity = integer(p, "capacity", R.CFG.maxStudents, 200);
@@ -104,7 +140,6 @@ export function installMasterRules(R, U, fail) {
         courses: ["level", "sessions", "fee", "code"],
         branches: ["code"],
         terms: ["start", "end", "code"],
-        teachers: ["status"],
       };
       if (
         old &&
@@ -116,7 +151,14 @@ export function installMasterRules(R, U, fail) {
         fail(
           "Danh mục đang được lớp/lịch học sử dụng. Không thể đổi thông tin ảnh hưởng lịch hoặc học phí; hãy tạo bản ghi mới.",
         );
-      if (old) Object.assign(old, d);
+      if (old) {
+        Object.assign(old, d);
+        if (col === "teachers")
+          for (const account of db.users.filter((user) => user.role === "teacher" && user.teacherId === old.id)) {
+            account.name = old.name;
+            account.branchIds = [...old.branchIds];
+          }
+      }
       else
         db[col].push({
           id: U.id(col.slice(0, 2)),
@@ -141,6 +183,10 @@ export function installMasterRules(R, U, fail) {
       )
         fail("Danh mục không hợp lệ.");
       R.must(db, col, id);
+      if (col === "branches" && db.users.some((u) => u.branchIds?.includes(id)))
+        fail("Cơ sở đang được phân công cho nhân viên, không thể xóa.");
+      if (col === "branches" && db.teachers.some((teacher) => teacher.branchIds?.includes(id)))
+        fail("Cơ sở đang được phân công cho giáo viên, không thể xóa.");
       const key = {
         students: "studentId",
         teachers: "teacherId",
@@ -169,16 +215,48 @@ export function installMasterRules(R, U, fail) {
     return "Đã cập nhật tư vấn";
   };
   R.createLead = (db, p) => {
+    for (const key of ["name", "phone", "courseId"])
+      if (typeof p[key] !== "string") fail("Thông tin tư vấn không hợp lệ.");
+    for (const key of ["branchId", "classId", "note", "contactTime"])
+      if (p[key] !== undefined && typeof p[key] !== "string")
+        fail("Thông tin tư vấn không hợp lệ.");
     const name = required(p, "name", "họ tên"),
       phone = required(p, "phone", "số điện thoại").replace(/[ .-]/g, "");
+    if (name.length > 120) fail("Họ tên không được vượt quá 120 ký tự.");
     if (!/^\+?\d{9,15}$/.test(phone)) fail("Số điện thoại cần có 9–15 chữ số.");
+    const note = (p.note || "").trim();
+    if (note.length > 500) fail("Ghi chú không được vượt quá 500 ký tự.");
+    const times = {
+      any: "Thời gian thuận tiện",
+      morning: "Buổi sáng",
+      afternoon: "Buổi chiều",
+      evening: "Buổi tối",
+    };
+    const contactTime = p.contactTime || "any";
+    if (!Object.hasOwn(times, contactTime)) fail("Khung giờ tư vấn không hợp lệ.");
     const co = R.must(db, "courses", p.courseId, "khóa học");
+    const klass = p.classId ? R.must(db, "classes", p.classId, "lớp tư vấn") : null;
+    if (klass && (klass.status !== "Mở đăng ký" || klass.courseId !== co.id))
+      fail("Lớp đã ngừng nhận đăng ký hoặc không thuộc khóa học đã chọn.");
+    if (klass && p.branchId && klass.branchId !== p.branchId)
+      fail("Lớp không thuộc cơ sở đã chọn.");
+    const branch = p.branchId || klass?.branchId
+      ? R.must(db, "branches", p.branchId || klass.branchId, "cơ sở tư vấn")
+      : null;
     const x = {
       id: U.id("ld"),
       name,
       phone,
       course: co.name,
-      note: String(p.note || "").trim(),
+      courseId: co.id,
+      branchId: branch?.id || null,
+      branchName: branch?.name || "",
+      classId: klass?.id || null,
+      classCode: klass?.code || "",
+      classSchedule: klass ? R.scheduleText(klass) : "",
+      contactTime,
+      contactTimeLabel: times[contactTime],
+      note,
       status: "Mới",
       createdAt: U.today(),
     };

@@ -1,0 +1,77 @@
+/* Branch pages and address-based maps; scoped to avoid changing staff screens. */
+.branch-detail-page { color: var(--ink, #14254d); }
+.branch-detail-hero { padding: 35px 0 64px; background: linear-gradient(125deg, #f5f8ff, #edf3ff); }
+.branch-detail-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 55px; align-items: center; margin-top: 38px; }
+.branch-detail-intro h1 { margin: 20px 0 17px; font-size: clamp(30px, 3.7vw, 48px); font-weight: 750; letter-spacing: -1.8px; line-height: 1.16; overflow-wrap: anywhere; }
+.branch-detail-intro > p { max-width: 520px; color: #52627b; font-size: 17px; line-height: 1.85; }
+.branch-detail-intro .hero-label { display: inline-flex; align-items: center; gap: 8px; }
+.branch-detail-facts { display: flex; gap: 34px; margin: 28px 0; }
+.branch-detail-facts > div { display: flex; flex-direction: column; gap: 5px; }
+.branch-detail-facts strong { color: #2455ed; font-size: 32px; font-weight: 750; line-height: 1.2; }
+.branch-detail-facts span { color: #52627b; font-size: 13px; }
+.branch-detail-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.branch-outline-link { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border: 1px solid #cfdbf4; padding: 13px 18px; border-radius: 9px; background: #fff; color: #2455ed; font-size: 14px; font-weight: 650; min-height: 48px; }
+.branch-outline-link:hover, .branch-outline-link:focus-visible { background: #eaf0ff; border-color: #2455ed; }
+.branch-detail-visual { margin: 0; padding: 10px; border: 1px solid #dce6fa; border-radius: 24px; background: #fff; box-shadow: 0 18px 50px #2455ed12; min-width: 0; }
+.branch-detail-visual picture { display: block; }
+.branch-detail-visual img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; }
+.branch-detail-visual figcaption { padding: 11px 5px 4px; color: #61728d; font-size: 12px; text-align: center; }
+.branch-location-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: 38px; }
+.branch-contact-card { padding: 30px; border: 1px solid #e0e8f5; border-radius: 18px; background: #f9fbff; }
+.branch-contact-card h2 { font-size: 28px; line-height: 1.3; letter-spacing: -.8px; margin: 12px 0 22px; }
+.branch-contact-list { margin: 0 0 25px; display: grid; gap: 22px; }
+.branch-contact-list dt { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; color: #3657a4; font-size: 13px; font-weight: 700; }
+.branch-contact-list dd { margin: 0; color: #52627b; font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.branch-contact-list dd a { color: #2455ed; font-weight: 700; }
+.branch-map-heading { font-size: 22px; line-height: 1.4; letter-spacing: -.5px; margin: 0 0 16px; }
+.branch-map { min-width: 0; }
+.branch-map-frame { overflow: hidden; border-radius: 16px; background: #edf3ff; border: 1px solid #dce6f6; }
+.branch-map iframe { display: block; width: 100%; height: 355px; border: 0; }
+.branch-map-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; padding-top: 7px; }
+.branch-map-links a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: #2455ed; font-size: 14px; font-weight: 650; }
+.branch-map-links a:hover { text-decoration: underline; }
+.branch-map-note, .branch-map-empty { color: #61728d; font-size: 12px; line-height: 1.75; margin: 3px 0 0; }
+.branch-map-compact .branch-map-frame { border-radius: 10px; }
+.branch-map-compact iframe { height: 180px; }
+.branch-map-compact .branch-map-links { gap: 3px 10px; }
+.branch-map-compact .branch-map-links a { font-size: 12px; }
+.branch-program-section { background: #f7f9ff; }
+.branch-course-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.branch-course-card { display: flex; flex-direction: column; padding: 27px; background: #fff; border: 1px solid #e0e8f5; border-radius: 16px; }
+.branch-course-code { color: #2455ed; font-weight: 750; font-size: 13px; letter-spacing: .7px; }
+.branch-course-card h3 { font-size: 21px; line-height: 1.45; margin: 12px 0 10px; letter-spacing: -.6px; }
+.branch-course-card > p { color: #52627b; font-size: 15px; line-height: 1.8; margin: 0 0 18px; flex: 1; }
+.branch-course-card dl { display: grid; gap: 9px; margin: 0; }
+.branch-course-card dl > div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.branch-course-card dt { color: #61728d; font-size: 12px; }
+.branch-course-card dd { margin: 0; font-size: 13px; font-weight: 700; }
+.branch-course-actions { display: flex; flex-direction: column; gap: 4px; margin-top: 20px; }
+.branch-course-actions a { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 44px; padding: 9px 12px; background: #eff4ff; border-radius: 8px; color: #2455ed; font-size: 13px; font-weight: 650; }
+.branch-course-actions a:last-child { justify-content: center; color: #fff; background: #2455ed; }
+.branch-course-actions a:hover { background: #193fc5; color: #fff; }
+.branch-class-section { scroll-margin-top: 120px; }
+@media (max-width: 1000px) {
+  .branch-detail-hero-grid { gap: 28px; }
+  .branch-location-grid { grid-template-columns: 1fr 1.1fr; gap: 25px; }
+  .branch-course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .branch-contact-card { padding: 24px; }
+  .branch-detail-actions { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 700px) {
+  .branch-detail-hero { padding: 24px 0 38px; }
+  .branch-detail-hero-grid, .branch-location-grid { grid-template-columns: 1fr; gap: 28px; }
+  .branch-detail-hero-grid { margin-top: 24px; }
+  .branch-detail-intro h1 { letter-spacing: -1px; }
+  .branch-detail-intro > p { font-size: 16px; }
+  .branch-detail-facts { gap: 26px; margin: 22px 0; }
+  .branch-detail-facts span { font-size: 12px; }
+  .branch-detail-actions { align-items: stretch; }
+  .branch-contact-card { padding: 23px; }
+  .branch-contact-card h2 { font-size: 25px; }
+  .branch-map iframe { height: 290px; }
+  .branch-map-compact iframe { height: 180px; }
+  .branch-course-grid { grid-template-columns: 1fr; }
+  .branch-course-card { padding: 23px; }
+  .branch-class-section { scroll-margin-top: 90px; }
+}
+@media print { .branch-map { display: none; } .branch-detail-hero-grid, .branch-location-grid { display: block; } }

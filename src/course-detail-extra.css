@@ -1,0 +1,67 @@
+.course-entry-note {
+  display: flex;
+  gap: 14px;
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #dfe7fa;
+  border-radius: 16px;
+  background: #f5f8ff;
+}
+.course-entry-note > svg { color: #2455ed; margin-top: 3px; }
+.course-entry-note h3, .course-objectives h3 { font-size: 17px; margin: 0 0 8px; color: #14254d; }
+.course-entry-note p { margin: 0; font-size: 15px; line-height: 1.8; color: #52627b; }
+.course-objectives { margin-top: 25px; }
+.course-objectives ul { padding-left: 20px; margin: 10px 0 0; color: #52627b; }
+.course-objectives li { padding-left: 4px; margin-top: 9px; line-height: 1.8; }
+.course-learning-section { background: #f5f8ff; }
+.course-learning-outline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0;
+  margin: 30px 0 0;
+  list-style: none;
+}
+.course-learning-outline li { padding: 28px; border: 1px solid #e1e8f7; border-radius: 20px; background: #fff; }
+.course-outline-number { display: block; font-size: 34px; line-height: 1; font-weight: 800; color: #bdccf8; }
+.course-learning-outline h3 { margin: 22px 0 12px; font-size: 19px; line-height: 1.45; color: #14254d; }
+.course-learning-outline p { margin: 0; font-size: 15px; line-height: 1.85; color: #52627b; }
+.course-material-note { display: flex; align-items: flex-start; gap: 14px; margin-top: 25px; color: #61728d; }
+.course-material-note > svg { margin-top: 3px; color: #2455ed; }
+.course-material-note p { margin: 0; font-size: 14px; line-height: 1.85; }
+.course-practice-card { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(230px, 1fr); border: 1px solid #e1e8f7; border-radius: 24px; overflow: hidden; }
+.course-practice-card form { padding: 34px; min-width: 0; }
+.course-practice-card fieldset { border: 0; padding: 0; margin: 0 0 24px; min-width: 0; }
+.course-practice-card legend { padding: 0; color: #14254d; font-size: 21px; font-weight: 750; }
+.course-practice-prompt { font-size: 17px; line-height: 1.8; margin: 18px 0; color: #304564; }
+.course-practice-options { display: grid; gap: 10px; }
+.course-practice-options label { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border: 1px solid #dfe6f3; border-radius: 12px; font-size: 16px; line-height: 1.7; cursor: pointer; color: #304564; }
+.course-practice-options label.selected { border-color: #2455ed; background: #f1f5ff; }
+.course-practice-options input { flex-shrink: 0; accent-color: #2455ed; margin-top: 6px; width: 17px; height: 17px; }
+.course-practice-options label:focus-within { outline: 2px solid #2455ed; outline-offset: 3px; }
+.course-practice-feedback { margin-top: 24px; padding: 19px; background: #eef7f2; border: 1px solid #d3e9dd; border-radius: 13px; color: #245342; font-size: 15px; line-height: 1.8; }
+.course-practice-feedback p { margin: 9px 0 0; }
+.course-practice-download { padding: 34px; background: #f3f6ff; display: flex; flex-direction: column; align-items: flex-start; }
+.course-practice-book { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 18px; color: #2455ed; background: #e2eaff; }
+.course-practice-download h3 { margin: 24px 0 12px; color: #14254d; font-size: 22px; }
+.course-practice-download p { margin: 0 0 23px; color: #52627b; line-height: 1.85; font-size: 15px; }
+.course-practice-download small { display: block; margin-top: 24px; color: #61728d; line-height: 1.75; font-size: 13px; }
+.detail-classes .class-information h3 a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: #b9c9f3; }
+.detail-classes .class-information h3 a:hover { color: #2455ed; }
+@media (max-width: 900px) {
+  .course-learning-outline { gap: 14px; }
+  .course-learning-outline li { padding: 23px 20px; }
+  .course-practice-card { grid-template-columns: minmax(0, 1.5fr) minmax(220px, 1fr); }
+  .course-practice-card form, .course-practice-download { padding: 26px; }
+}
+@media (max-width: 640px) {
+  .course-learning-outline, .course-practice-card { grid-template-columns: minmax(0, 1fr); }
+  .course-learning-outline li { padding: 24px; }
+  .course-learning-outline h3 { margin-top: 16px; }
+  .course-practice-card { border-radius: 18px; }
+  .course-practice-card form, .course-practice-download { padding: 24px 20px; }
+  .course-practice-prompt { font-size: 16px; }
+  .course-practice-options label { padding: 13px 12px; }
+  .course-practice-card .prep-button { width: 100%; justify-content: center; }
+  .course-entry-note { padding: 18px; gap: 12px; }
+}

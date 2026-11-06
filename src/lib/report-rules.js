@@ -21,7 +21,7 @@ export function installReportRules(R, U, CFG, fail) {
           (p) =>
             p.type === "Thu" &&
             !p.voided &&
-            (classOf(p.enrollmentId) || {}).branchId === b.id,
+            (p.branchId || (classOf(p.enrollmentId) || {}).branchId) === b.id,
         )
         .reduce((s, p) => s + p.amount, 0);
       const receivable = ens.reduce((s, e) => s + R.due(db, e), 0);

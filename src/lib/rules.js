@@ -6,6 +6,7 @@ import { installAttendanceRules } from "./attendance-rules.js";
 import { installReportRules } from "./report-rules.js";
 import { installExtraRules } from "./extra-rules.js";
 import { installMasterRules } from "./master-rules.js";
+import { BRANCH_PERMISSIONS, installBranchGuards } from "./branch-access.js";
 /* =====================================================================
  * rules.js – Lớp nghiệp vụ (service layer) của Trung tâm Anh ngữ ABC.
  * Mọi luật quan trọng được kiểm tra ở đây; giao diện chỉ gọi hàm.
@@ -83,18 +84,7 @@ const CFG = {
   lateJoin: 2, // lớp đã học quá số buổi này thì không nhận thêm
 };
 const LIVE = ["Chờ đóng phí", "Đã xác nhận", "Hoàn thành"]; // trạng thái chiếm chỗ trong lớp
-const PERMS = {
-  master: ["manager"],
-  klass: ["manager"],
-  approve: ["manager"],
-  student: ["manager", "enroll"],
-  enroll: ["manager", "enroll"],
-  request: ["manager", "enroll"],
-  lead: ["manager", "enroll"],
-  pay: ["manager", "accountant"],
-  report: ["manager", "accountant"],
-  attend: ["manager", "teacher"],
-};
+const PERMS = BRANCH_PERMISSIONS;
 
 const R = { CFG, LIVE, PERMS };
 
@@ -228,4 +218,5 @@ installAttendanceRules(R, U, CFG, fail);
 installReportRules(R, U, CFG, fail);
 installExtraRules(R, U, CFG, fail);
 installMasterRules(R, U, fail);
+installBranchGuards(R, fail);
 export { R, U, CFG, RuleError, fail, LIVE };

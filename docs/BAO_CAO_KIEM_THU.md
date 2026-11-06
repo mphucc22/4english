@@ -1,4 +1,26 @@
-# Báo cáo kiểm thử bản ABC English 2.1
+# Báo cáo kiểm thử 4ENGLISH 2.1
+
+## Cập nhật website và Google Maps — 06/11/2026
+
+Lượt trình duyệt cuối hoàn tất lúc **19:59:11 ngày 06/11/2026 (giờ Việt Nam)**, Chrome **156.0.8078.81** headless trên Windows, Node.js 24.15.0. Kiểm tra production build với backend và SQLite riêng của ca kiểm thử; không sửa cơ sở dữ liệu đang dùng của người dùng.
+
+| Kiểm tra | Kết quả |
+| --- | --- |
+| `npm run build` | Thành công |
+| Quy tắc nghiệp vụ gốc | 23/23 đạt |
+| Node/API/logic, bao gồm cơ sở và tư vấn mới | 127/127 đạt |
+| Trình duyệt: UI01–UI47 và 4 ca mở trang theo vai trò | 51/51 đạt |
+| Lượt kiểm tra màn hình trong ma trận | 133 |
+
+Các luồng mới: trang riêng cả 4 cơ sở và bản đồ, CTA giữ khóa–cơ sở–lớp, biên nhận được lưu thật, 6 bài luyện và tài liệu tải về, URL sạch mở trực tiếp, metadata, tạm dừng/giảm chuyển động, lớp đóng trong lúc khách điền form và chế độ vận hành ẩn demo. Các luồng thu phí, điểm danh, chuyển lớp, bảo lưu, tài khoản và xung đột dữ liệu cũng đã được chạy lại.
+
+Lỗi đường dẫn tài nguyên tương đối làm URL sâu bị trắng trang đã được sửa bằng Vite base `/`; xác nhận lại bằng các ca mở URL trực tiếp. Hai ca kiểm tra thông báo tư vấn đã cập nhật sang biên nhận mới, thay vì thông báo toast cũ.
+
+Kiểm thử giao diện tự động chặn mạng Google để kiểm tra tích hợp ổn định. Xác minh mạng Google Maps được chạy riêng: iframe cơ sở Cầu Giấy chuyển 301 tới trang nhúng HTTP 200, 10 ô bản đồ HTTP 200, không có lỗi CSP; ảnh chụp cho thấy ghim tại 88 Xuân Thủy. Các URL của cả 4 cơ sở khớp địa chỉ đang lưu. Điều này xác nhận bản đồ theo địa chỉ, không xác minh quyền sở hữu thương hiệu tại địa điểm.
+
+Bằng chứng: [JSON toàn bộ lượt trình duyệt](../test-results/browser-results.json), [tóm tắt lượt mới nhất](../test-results/browser.txt), [ảnh bản đồ thật](../test-results/public-live-map.png), [kiểm tra mạng bản đồ](../test-results/public-live-map.json). Hướng dẫn dùng và cấu hình ở [GIAO_DIEN_MOI.md](GIAO_DIEN_MOI.md).
+
+## Báo cáo trước đây — giữ để đối chiếu
 
 Mã gốc: `48407496124d5fe4e44f332259b43665f02a2de3`. Thời điểm hoàn tất lượt Chromium: 2026-10-05T04:05:22.754Z (UTC). Xem JSON/log trong `test-results` để đối chiếu. Bộ kiểm thử này chạy trên bản mới, không đổi kết quả thất bại của báo cáo gốc thành Passed.
 

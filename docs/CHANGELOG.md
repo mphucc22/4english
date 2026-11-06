@@ -1,5 +1,17 @@
 # Thay đổi của bản 2.1
 
+## 06/11/2026 — Website 4ENGLISH và trang cơ sở
+
+- Trang riêng từng cơ sở, Google Maps và chỉ đường lấy từ địa chỉ đang lưu; có trường giờ hoạt động và URL nhúng ghim chính xác, chỉ quản trị toàn hệ thống sửa.
+- Tư vấn giữ khóa/cơ sở/lớp, giờ liên hệ và ảnh chụp thông tin lớp; biên nhận ngay trong form. Lớp ngừng nhận đăng ký trong lúc điền form sẽ được cảnh báo và chặn gửi đến khi khách chọn lại.
+- Lộ trình, mục tiêu tham khảo, bài luyện tương tác và tài liệu tải về cho sáu chương trình; không thêm cam kết/giáo trình chưa xác nhận.
+- Trang liên hệ, quyền riêng tư, hướng dẫn đăng ký; chế độ vận hành ẩn tài khoản mẫu và chặn reset demo ở máy chủ.
+- Ảnh không có người; WebP responsive giảm khoảng 92% dung lượng ảnh hero. Tạm dừng/giảm chuyển động và ngừng hiệu ứng nền khi ra ngoài màn hình.
+- URL công khai, metadata riêng từ server/client, Open Graph, canonical, robots và sitemap. Giữ tương thích liên kết hash cũ, sửa base tài nguyên để refresh URL sâu hoạt động.
+- Hướng dẫn cấu hình: `docs/GIAO_DIEN_MOI.md`; biến môi trường mẫu: `.env.production.example`.
+
+## Các thay đổi trước đó
+
 - Chặn reset demo từ revision cũ; khôi phục có xung đột tải dữ liệu mới và giữ dialog để người dùng kiểm tra.
 - Giữ requestId của thao tác chưa xác nhận theo tài khoản/nội dung, độc lập revision; retry sau polling không tạo thêm phiếu thu.
 - Không nhận snapshot polling cũ hơn revision hiện có; bỏ phản hồi polling thuộc lần đăng nhập/đăng xuất trước và tạm ngừng polling trong lúc đổi phiên.

@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "test": "node run-tests.js && node --test tests/*.test.js",
     "start": "node server/index.js",
+    "start:production": "node --env-file-if-exists=.env.production scripts/start-production.js",
     "test:browser": "node tests/browser-run.js"
   },
   "dependencies": {

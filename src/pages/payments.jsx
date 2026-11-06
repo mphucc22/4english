@@ -136,12 +136,13 @@ export function Payments() {
           "Ngày",
           "Học viên",
           "Lớp",
+          "Cơ sở thu",
           "Hình thức",
           "Số tiền",
           "Người thu",
           "",
         ]}
-        right={[5]}
+        right={[6]}
         rows={pays.slice((current - 1) * 30, current * 30).map((p) => (
           <tr key={p.id} className={p.voided ? "opacity-60" : ""}>
             <td>
@@ -164,6 +165,9 @@ export function Payments() {
               }
             </td>
             <td>
+              {by(db, "branches", p.branchId).name || "Chưa xác định"}
+            </td>
+            <td>
               {p.method}
               <br />
               <Muted>{p.voidNote || p.note}</Muted>
@@ -171,7 +175,7 @@ export function Payments() {
             <td className="text-right font-semibold">{vnd(p.amount)}</td>
             <td>{p.by}</td>
             <td>
-              {user.role === "manager" && !p.voided && p.type === "Thu" && (
+              {R.can(user, "approve") && !p.voided && p.type === "Thu" && (
                 <Btn
                   sm
                   v="ghost"

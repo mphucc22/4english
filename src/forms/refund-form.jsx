@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Btn,
   Badge,
@@ -17,8 +18,16 @@ import { by, vnd, dmy, enLabel } from "../lib/util.js";
 import { Hint, seats } from "./shared.jsx";
 
 export function RefundForm({ sid }) {
-  const { db, execute } = useStore(),
+  const { db, user, branchId: activeBranchId, execute } = useStore(),
     st = by(db, "students", sid);
+  const options = db.branches
+    .map((b) => [b.id, `${b.name} — ${vnd(R.branchBalance(db, sid, b.id))}`]);
+  if (user.role === "manager" && !activeBranchId && R.branchBalance(db, sid, null) > 0)
+    options.push(["__unassigned__", "Số dư cũ chưa xác định cơ sở"]);
+  const [branchId, setBranchId] = useState(
+    activeBranchId || options.find(([id]) => R.branchBalance(db, sid, id) > 0)?.[0] || "",
+  );
+  const available = branchId ? R.branchBalance(db, sid, branchId) : 0;
   return (
     <Form
       title={`Hoàn số dư – ${st.name}`}
@@ -27,15 +36,25 @@ export function RefundForm({ sid }) {
       onSubmit={(fd) => execute("refundBalance", sid, Object.fromEntries(fd))}
     >
       <p className="mb-4">
-        Số dư hiện tại: <b>{vnd(st.balance)}</b>
+        Số dư có thể hoàn tại cơ sở đã chọn: <b>{vnd(available)}</b>
       </p>
+      <Fld label="Cơ sở ghi nhận hoàn tiền">
+        <Sel
+          required
+          name="branchId"
+          value={branchId}
+          onChange={(e) => setBranchId(e.target.value)}
+          ph="— Chọn cơ sở —"
+          options={options}
+        />
+      </Fld>
       <Fld label="Số tiền hoàn (₫)">
         <In
           required
           name="amount"
           type="number"
           min={1}
-          max={st.balance}
+          max={available}
           step={1}
         />
       </Fld>

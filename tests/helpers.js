@@ -1,8 +1,8 @@
 import { R, U, CFG } from "../src/lib/rules.js";
 import { Seed } from "../src/lib/seed.js";
 export const manager = { id: "sys", role: "manager", name: "Quản lý" },
-  accountant = { id: "ac", role: "accountant", name: "Kế toán" },
-  enrollment = { id: "en", role: "enroll", name: "Ghi danh" };
+  accountant = { id: "ac", role: "accountant", name: "Kế toán", branchIds: ["br1", "br2", "br3", "br4"] },
+  enrollment = { id: "en", role: "enroll", name: "Ghi danh", branchIds: ["br1", "br2", "br3", "br4"] };
 export function fixture() {
   return Seed.minimal();
 }

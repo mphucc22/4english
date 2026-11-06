@@ -1,4 +1,12 @@
-# ABC English — DT06, bản hoàn thiện 2.1
+# 4ENGLISH — DT06, bản hoàn thiện 2.1
+
+Đã bổ sung quản lý theo cơ sở: tài khoản **Quản trị toàn hệ thống** quản lý chung; tài khoản **Quản lý cơ sở**, ghi danh, kế toán và giáo viên chỉ thao tác trong phạm vi được giao. Xem [hướng dẫn quản lý từng cơ sở](docs/QUAN_LY_CO_SO.md) để tạo tài khoản, giao cơ sở và nâng cấp dữ liệu cũ.
+
+Hồ sơ giáo viên và tài khoản đăng nhập đã được đồng bộ tên, cơ sở công tác và trạng thái truy cập; xem [hướng dẫn giáo viên và tài khoản](docs/QUAN_LY_GIAO_VIEN.md).
+
+Giao diện được thiết kế lại theo hướng xanh dương, lấy cảm hứng từ PREP; đã bổ sung chi tiết khóa học, giảng viên và bài thử đầu vào. Xem [hướng dẫn giao diện mới](docs/GIAO_DIEN_MOI.md) và [báo cáo kiểm thử GUI](docs/KIEM_THU_GUI.md).
+
+Website có trang riêng từng cơ sở và Google Maps, tư vấn giữ đúng lớp/cơ sở, bài học mẫu, trang liên hệ và chế độ vận hành. Xem [cách cập nhật vị trí, liên hệ và chạy bản vận hành](docs/GIAO_DIEN_MOI.md#bản-đồ-và-thông-tin-cơ-sở). Sau khi cập nhật mã máy chủ, dừng terminal cũ rồi chạy lại `npm run dev`.
 
 Dự án quản lý đào tạo trung tâm ngoại ngữ, sửa từ repository `anthanhphan180506-byte/abc-english`, commit gốc `48407496124d5fe4e44f332259b43665f02a2de3`.
 

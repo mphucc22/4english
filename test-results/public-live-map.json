@@ -1,0 +1,86 @@
+{
+  "verified": true,
+  "addressUrls": [
+    {
+      "name": "4ENGLISH Cầu Giấy",
+      "address": "88 Xuân Thủy, Cầu Giấy, Hà Nội",
+      "embed": "https://www.google.com/maps?q=88%20Xu%C3%A2n%20Th%E1%BB%A7y%2C%20C%E1%BA%A7u%20Gi%E1%BA%A5y%2C%20H%C3%A0%20N%E1%BB%99i&output=embed&hl=vi&z=16"
+    },
+    {
+      "name": "4ENGLISH Hà Đông",
+      "address": "15 Quang Trung, Hà Đông, Hà Nội",
+      "embed": "https://www.google.com/maps?q=15%20Quang%20Trung%2C%20H%C3%A0%20%C4%90%C3%B4ng%2C%20H%C3%A0%20N%E1%BB%99i&output=embed&hl=vi&z=16"
+    },
+    {
+      "name": "4ENGLISH Thanh Xuân",
+      "address": "120 Nguyễn Trãi, Thanh Xuân, Hà Nội",
+      "embed": "https://www.google.com/maps?q=120%20Nguy%E1%BB%85n%20Tr%C3%A3i%2C%20Thanh%20Xu%C3%A2n%2C%20H%C3%A0%20N%E1%BB%99i&output=embed&hl=vi&z=16"
+    },
+    {
+      "name": "4ENGLISH Long Biên",
+      "address": "36 Nguyễn Văn Cừ, Long Biên, Hà Nội",
+      "embed": "https://www.google.com/maps?q=36%20Nguy%E1%BB%85n%20V%C4%83n%20C%E1%BB%AB%2C%20Long%20Bi%C3%AAn%2C%20H%C3%A0%20N%E1%BB%99i&output=embed&hl=vi&z=16"
+    }
+  ],
+  "frameUrl": "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1zODggWHXDom4gVGjhu6d5LCBD4bqndSBHaeG6pXksIEjDoCBO4buZaQ!6i16!3m1!1svi!5m1!1svi",
+  "frameText": "Phím tắt\nDữ liệu bản đồ ©2026 Google\nĐiều khoản\nBáo cáo một lỗi bản đồ",
+  "screenshot": "test-results/public-live-map.png",
+  "documents": [
+    {
+      "url": "https://www.google.com/maps?q=88%20Xu%C3%A2n%20Th%E1%BB%A7y%2C%20C%E1%BA%A7u%20Gi%E1%BA%A5y%2C%20H%C3%A0%20N%E1%BB%99i&output=embed&hl=vi&z=16",
+      "status": 301
+    },
+    {
+      "url": "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1zODggWHXDom4gVGjhu6d5LCBD4bqndSBHaeG6pXksIEjDoCBO4buZaQ!6i16!3m1!1svi!5m1!1svi",
+      "status": 200
+    }
+  ],
+  "tiles": [
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i16!2i52026!3i28850!4i256!2m3!1e0!2sm!3i802568557!2m3!1e2!2sspotlit!5i1!3m13!2svi!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i16!2i52025!3i28850!4i256!2m3!1e0!2sm!3i802568557!2m3!1e2!2sspotlit!5i1!3m13!2svi!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i16!2i52026!3i28849!4i256!2m3!1e0!2sm!3i802568557!2m3!1e2!2sspotlit!5i1!3m13!2svi!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i16!2i52025!3i28849!4i256!2m3!1e0!2sm!3i802568557!2m3!1e2!2sspotlit!5i1!3m13!2svi!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i16!2i52027!3i28849!4i256!2m3!1e0!2sm!3i802568557!2m3!1e2!2sspotlit!5i1!3m13!2svi!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i16!2i52027!3i28850!4i256!2m3!1e0!2sm!3i802568557!2m3!1e2!2sspotlit!5i1!3m13!2svi!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m4!1m3!1i16!2i52024!3i28849!1m4!1m3!1i16!2i52025!3i28849!1m4!1m3!1i16!2i52024!3i28850!1m4!1m3!1i16!2i52025!3i28850!1m4!1m3!1i16!2i52026!3i28849!",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i16!2i52024!3i28850!4i256!2m3!1e0!2sm!3i802568557!2m3!1e2!2sspotlit!5i1!3m13!2svi!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i16!2i52024!3i28849!4i256!2m3!1e0!2sm!3i802568557!2m3!1e2!2sspotlit!5i1!3m13!2svi!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37",
+      "status": 200
+    },
+    {
+      "url": "https://www.google.com/maps/vt?pb=!1m5!1m4!1i13!2i6503!3i3606!4i256!2m1!1e1!3m12!2svi!3sUS!5e289!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmx8cC52Om9mZg!4e0!5m1!1e3!2",
+      "status": 200
+    }
+  ],
+  "failed": [],
+  "console": [],
+  "networkVerified": true,
+  "domAddressVerified": false,
+  "screenshotAddressVerified": true,
+  "screenshotReview": "Visible red pin and Google place card: 88 ?. Xu?n Th?y; 88 ?. Xu?n Th?y, l?ng V?ng, C?u Gi?y, H? N?i 11403, Vi?t Nam."
+}

@@ -25,28 +25,28 @@ const Seed = {
       {
         id: "br1",
         code: "CG",
-        name: "ABC Cầu Giấy",
+        name: "4ENGLISH Cầu Giấy",
         address: "88 Xuân Thủy, Cầu Giấy, Hà Nội",
         phone: "024 3333 0001",
       },
       {
         id: "br2",
         code: "HD",
-        name: "ABC Hà Đông",
+        name: "4ENGLISH Hà Đông",
         address: "15 Quang Trung, Hà Đông, Hà Nội",
         phone: "024 3333 0002",
       },
       {
         id: "br3",
         code: "TX",
-        name: "ABC Thanh Xuân",
+        name: "4ENGLISH Thanh Xuân",
         address: "120 Nguyễn Trãi, Thanh Xuân, Hà Nội",
         phone: "024 3333 0003",
       },
       {
         id: "br4",
         code: "LB",
-        name: "ABC Long Biên",
+        name: "4ENGLISH Long Biên",
         address: "36 Nguyễn Văn Cừ, Long Biên, Hà Nội",
         phone: "024 3333 0004",
       },
@@ -133,6 +133,7 @@ const Seed = {
       email: `gv${i + 1}@abc.edu.vn`,
       specialty,
       status: "Đang dạy",
+      branchIds: branches.map((branch) => branch.id),
     }));
     const last = [
       "Nguyễn",
@@ -226,14 +227,14 @@ const Seed = {
       },
     ];
     return {
-      meta: { receiptSeq: 0, version: 2, revision: 0 },
-      users,
+      meta: { receiptSeq: 0, version: 2, revision: 0, branchSchemaVersion: 1, teacherIdentityVersion: 1 },
+      users: users.map((u) => ({ ...u, disabled: false, branchIds: u.role === "manager" ? [] : branches.map((b) => b.id) })),
       branches,
       rooms,
       courses,
       terms: Seed.terms(),
       teachers,
-      students,
+      students: students.map((s) => ({ ...s, branchId: "br1" })),
       classes: [],
       sessions: [],
       enrollments: [],
@@ -264,7 +265,7 @@ const Seed = {
 
   build() {
     const db = Seed.minimal(),
-      S = Seed.SYS,
+      S = { ...Seed.SYS, branchIds: db.branches.map((b) => b.id) },
       [t0, t1] = [db.terms[0], db.terms[1]],
       today = U.today();
     let start0 = U.monday(U.addDays(today, -21));

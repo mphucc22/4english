@@ -1,13 +1,33 @@
+import { allowedBranchIds } from "./branch-access.js";
+import { canTeacherWorkAt } from "./teacher-identity.js";
+
 /** Dịch vụ bổ sung: sổ số dư, hủy/hoàn phí, hết hạn giữ chỗ, đổi từng buổi. */
 export function installExtraRules(R, U, CFG, fail) {
-  R.balance = (db, studentId, amount, note, ref) => {
+  R.branchBalance = (db, studentId, branchId) => {
+    const rows = (db.balanceLedger || []).filter((x) => x.studentId === studentId);
+    if (!branchId || branchId === "__unassigned__") {
+      const total = R.by(db, "students", studentId)?.balance || 0;
+      return total - rows.filter((x) => x.branchId).reduce((sum, x) => sum + x.amount, 0);
+    }
+    return rows
+      .filter((x) => x.branchId === branchId)
+      .reduce((sum, x) => sum + x.amount, 0);
+  };
+  R.balance = (db, studentId, amount, note, ref, branchId) => {
     const st = R.must(db, "students", studentId, "học viên");
+    const enrollment = R.by(db, "enrollments", ref);
+    const branch = branchId || enrollment?.branchId ||
+      R.by(db, "classes", enrollment?.classId)?.branchId || null;
     if (!Number.isSafeInteger(amount) || st.balance + amount < 0)
       fail("Biến động số dư không hợp lệ.");
+    if (branch && !R.by(db, "branches", branch)) fail("Cơ sở số dư không hợp lệ.");
+    if (amount < 0 && R.branchBalance(db, studentId, branch) + amount < 0)
+      fail("Số dư tại cơ sở không đủ để thực hiện thao tác.");
     db.balanceLedger ||= [];
     const x = {
       id: U.id("bl"),
       studentId,
+      branchId: branch,
       amount,
       balanceAfter: st.balance + amount,
       note,
@@ -92,11 +112,27 @@ export function installExtraRules(R, U, CFG, fail) {
         fail("Nhập số tiền nguyên dương và lý do hoàn phí.");
       if (!["Tiền mặt", "Chuyển khoản"].includes(p.method))
         fail("Hình thức hoàn tiền không hợp lệ.");
-      R.balance(db, sid, -amount, "Hoàn tiền: " + note, u.id);
+      const positive = db.branches.filter((b) => R.branchBalance(db, sid, b.id) > 0);
+      const requested = p.branchId || u.activeBranchId ||
+        (u.branchIds?.length === 1 ? u.branchIds[0] :
+          positive.length === 1 ? positive[0].id :
+            u.role === "manager" && !positive.length ? "__unassigned__" : "");
+      if (!requested) fail("Chọn cơ sở ghi nhận khoản hoàn tiền.");
+      const branchId = requested === "__unassigned__" ? null : requested;
+      if (branchId) R.must(db, "branches", branchId, "cơ sở hoàn tiền");
+      if (
+        (branchId && !allowedBranchIds(db, u).includes(branchId)) ||
+        (!branchId && (u.role !== "manager" || u.activeBranchId))
+      )
+        fail("Bạn không có quyền hoàn tiền tại cơ sở này.");
+      if (amount > R.branchBalance(db, sid, branchId))
+        fail("Số dư tại cơ sở không đủ để hoàn tiền.");
+      R.balance(db, sid, -amount, "Hoàn tiền: " + note, u.id, branchId);
       db.refunds ||= [];
       const x = {
         id: U.id("rf"),
         studentId: sid,
+        branchId,
         amount,
         note,
         method: p.method,
@@ -156,6 +192,8 @@ export function installExtraRules(R, U, CFG, fail) {
         teacher = R.must(db, "teachers", p.teacherId, "giáo viên");
       if (room.branchId !== c.branchId || teacher.status !== "Đang dạy")
         fail("Phòng/giáo viên không phù hợp với lớp.");
+      if (!canTeacherWorkAt(db, teacher.id, c.branchId))
+        fail("Giáo viên chưa được phân công công tác tại cơ sở của lớp. Hãy cập nhật hồ sơ giáo viên trước khi đổi buổi học.");
       if (!String(p.note || "").trim()) fail("Nhập lý do điều chỉnh buổi học.");
       const next = {
         ...s,

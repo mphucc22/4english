@@ -8,6 +8,8 @@ import { createApp } from "../server/app.js";
 import { Seed } from "../src/lib/seed.js";
 import { R, U } from "../src/lib/rules.js";
 import { klass, fill, pastSession } from "./helpers.js";
+import { runRedesignTests } from "./gui-redesign.js";
+import { runPublicSiteTests } from "./public-site.js";
 const temp = mkdtempSync(join(tmpdir(), "abc-browser-")),
   out = resolve("test-results");
 mkdirSync(out, { recursive: true });
@@ -16,6 +18,7 @@ await new Promise((r) => app.server.listen(0, "127.0.0.1", r));
 const url = `http://127.0.0.1:${app.server.address().port}`;
 let browser;
 const results = [];
+const screenCoverage = [];
 const selected = new Set(process.argv.slice(2));
 const reset = (change) =>
   app.database.transact(() => {
@@ -292,6 +295,7 @@ try {
         .getByRole("button", { name: "+ Thêm học viên", exact: true })
         .click();
       await page.locator("[name=name]").fill("   ");
+      await page.locator("[name=branchId]").selectOption("br1");
       await page.locator("[name=dob]").fill("2000-01-01");
       await page.locator("[name=phone]").fill("0901234567");
       await page.getByRole("dialog").locator("button[type=submit]").click();
@@ -413,8 +417,10 @@ try {
       await page.locator("[name=name]").fill("NV Giao diện");
       await page.locator("[name=username]").fill("ui.staff");
       await page.locator("[name=password]").fill("abcdef");
+      await page.locator('[name=branchIds][value="br1"]').check();
       await formSave(page);
       assert(read().users.some((u) => u.username === "ui.staff"));
+      assert.deepEqual(read().users.find((u) => u.username === "ui.staff").branchIds, ["br1"]);
       const { page: second } = await make({ hash: "#/login" });
       await second.locator("[name=u]").fill("ui.staff");
       await second.locator("[name=p]").fill("abcdef");
@@ -435,13 +441,15 @@ try {
       await page.locator("[name=name]").fill("Tư vấn giao diện");
       await page.locator("[name=phone]").fill("0901234567");
       await page.locator("[name=courseId]").selectOption("co2");
+      await page.locator("[name=branchId]").selectOption("br1");
       await page
         .getByRole("button", { name: "Gửi yêu cầu tư vấn", exact: true })
         .click();
       await page
         .getByRole("status")
-        .filter({ hasText: "Đã gửi yêu cầu" })
+        .filter({ hasText: "Đã nhận yêu cầu tư vấn" })
         .waitFor();
+      assert.equal(read().leads.find((lead) => lead.name === "Tư vấn giao diện").branchId, "br1");
       const staff = await make({ username: "ghidanh", hash: "#/app/leads" });
       await staff.page
         .locator("tr")
@@ -1068,6 +1076,17 @@ try {
       await page.getByRole("heading", { name: /Tự tin mở lời/ }).waitFor();
     },
   );
+  await runRedesignTests({
+    test,
+    reset,
+    read,
+    route,
+    formSave,
+    url,
+    out,
+    screenCoverage,
+  });
+  await runPublicSiteTests({ test, reset, read, route, formSave, url, out, screenCoverage });
 } finally {
   if (browser) await browser.close();
   await app.close();
@@ -1081,7 +1100,8 @@ writeFileSync(
   JSON.stringify(
     {
       at: new Date().toISOString(),
-      browser: "Chromium",
+      browser: browser?.version() || "Chromium",
+      screenCoverage,
       results,
       total: results.length,
       passed: results.filter((r) => r.status === "Passed").length,

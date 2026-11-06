@@ -1,9 +1,12 @@
 import { DatabaseSync } from "node:sqlite";
-import { mkdirSync } from "node:fs";
+import { mkdirSync, existsSync } from "node:fs";
 import { dirname } from "node:path";
 import { scryptSync, randomBytes } from "node:crypto";
 import { Seed } from "../src/lib/seed.js";
 import { R } from "../src/lib/rules.js";
+import { migrateBranchData } from "./branch-migration.js";
+import { migrateTeacherData } from "./teacher-migration.js";
+import { sameBranchIds, isLoginAllowed } from "../src/lib/teacher-identity.js";
 
 export const TABLES = [
   "users",
@@ -44,7 +47,7 @@ export function hashPassword(password) {
   const salt = randomBytes(16).toString("hex");
   return salt + ":" + scryptSync(password, salt, 64).toString("hex");
 }
-export function validateDb(db) {
+export function validateDb(db, { allowTeacherResync = false } = {}) {
   if (
     !db ||
     typeof db !== "object" ||
@@ -103,14 +106,38 @@ export function validateDb(db) {
     )
       throw Error("Mã trùng/thiếu tại " + col);
   }
-  if (!db.users.some((u) => u.role === "manager"))
+  if (!db.users.some((u) => u.role === "manager" && u.disabled !== true))
     throw Error("Cần ít nhất một quản lý.");
   for (const u of db.users)
     if (
-      !["manager", "enroll", "accountant", "teacher"].includes(u.role) ||
+      !["manager", "branch_manager", "enroll", "accountant", "teacher"].includes(u.role) ||
       (u.role === "teacher" && !db.teachers.some((t) => t.id === u.teacherId))
     )
       throw Error("Vai trò/liên kết giáo viên không hợp lệ.");
+  for (const user of db.users)
+    if (user.disabled !== undefined && typeof user.disabled !== "boolean")
+      throw Error("Trạng thái khóa tài khoản không hợp lệ.");
+  if (db.meta.teacherIdentityVersion !== undefined && db.meta.teacherIdentityVersion !== 1)
+    throw Error("Phiên bản hồ sơ giáo viên không hợp lệ.");
+  if (db.meta.teacherIdentityVersion === 1) {
+    for (const teacher of db.teachers)
+      if (!Array.isArray(teacher.branchIds) ||
+        new Set(teacher.branchIds).size !== teacher.branchIds.length ||
+        teacher.branchIds.some((id) => !db.branches.some((branch) => branch.id === id)))
+        throw Error("Cơ sở công tác của giáo viên không hợp lệ.");
+    for (const user of db.users) {
+      if (typeof user.disabled !== "boolean") throw Error("Thiếu trạng thái tài khoản.");
+      if (user.role !== "teacher") continue;
+      const teacher = db.teachers.find((row) => row.id === user.teacherId);
+      if (!allowTeacherResync && (user.name !== teacher.name || !sameBranchIds(user.branchIds, teacher.branchIds)))
+        throw Error("Tài khoản giáo viên chưa khớp hồ sơ giáo viên.");
+      const duplicates = db.users.filter((row) => row.role === "teacher" && row.teacherId === user.teacherId);
+      if (duplicates.length > 1 && !duplicates.every((row) => row.disabled === true && row.teacherLinkConflict === true))
+        throw Error("Một hồ sơ giáo viên chỉ được liên kết một tài khoản.");
+      if (user.teacherLinkConflict === true && user.disabled !== true)
+        throw Error("Tài khoản trùng liên kết phải được khóa để đối chiếu.");
+    }
+  }
   for (const room of db.rooms)
     if (
       !Number.isInteger(room.capacity) ||
@@ -217,6 +244,30 @@ export function validateDb(db) {
     )
       throw Error("Lớp đích không tồn tại.");
   }
+  if (db.meta.branchSchemaVersion !== undefined && db.meta.branchSchemaVersion !== 1)
+    throw Error("Phiên bản dữ liệu cơ sở không hợp lệ.");
+  if (db.meta.branchSchemaVersion === 1) {
+    const branchIds = new Set(db.branches.map((b) => b.id));
+    const validBranch = (id) => typeof id === "string" && branchIds.has(id);
+    for (const user of db.users)
+      if (!Array.isArray(user.branchIds) ||
+        new Set(user.branchIds).size !== user.branchIds.length ||
+        user.branchIds.some((id) => !validBranch(id)) ||
+        (user.role === "manager" && user.branchIds.length))
+        throw Error("Phân công cơ sở của tài khoản không hợp lệ.");
+    for (const table of ["students", "leads", "balanceLedger", "refunds"])
+      for (const row of db[table])
+        if (row.branchId != null && !validBranch(row.branchId))
+          throw Error("Cơ sở không hợp lệ tại " + table + ".");
+    for (const table of ["enrollments", "payments", "reservations"])
+      for (const row of db[table])
+        if (!validBranch(row.branchId))
+          throw Error("Thiếu hoặc sai cơ sở ghi nhận tại " + table + ".");
+    for (const row of db.audit)
+      if (row.branchIds !== undefined && (!Array.isArray(row.branchIds) ||
+        row.branchIds.some((id) => !validBranch(id))))
+        throw Error("Cơ sở của nhật ký không hợp lệ.");
+  }
   return db;
 }
 export function openDatabase(path) {
@@ -316,6 +367,26 @@ export function openDatabase(path) {
   };
   if (!load()) transact(() => save(Seed.build()));
   // Kiểm tra dữ liệu hiện có, không tự reset khi phát hiện lỗi.
+  const existing = load();
+  validateDb(existing);
+  if (!existing.meta.branchSchemaVersion || !existing.meta.teacherIdentityVersion) {
+    // One local recovery copy before the first persistent schema upgrade.
+    const backupPath = path + (existing.meta.branchSchemaVersion ? ".before-teachers.sqlite" : ".before-branches.sqlite");
+    if (path !== ":memory:" && !existsSync(backupPath))
+      sql.prepare("VACUUM INTO ?").run(backupPath);
+    transact(() => {
+      const db = load();
+      const upgradedBranches = migrateBranchData(db);
+      const upgradedTeachers = migrateTeacherData(db);
+      if (upgradedBranches || upgradedTeachers) {
+        db.meta.revision++;
+        save(db);
+        for (const user of db.users)
+          if (!isLoginAllowed(db, user))
+            sql.prepare("DELETE FROM auth_sessions WHERE user_id=?").run(user.id);
+      }
+    });
+  }
   validateDb(load());
   return { sql, load, save, transact, close: () => sql.close() };
 }

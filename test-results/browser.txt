@@ -1,8 +1,6 @@
-npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
-
-> abc-english@2.1.0 test:browser
-> node tests/browser-run.js
-
+Latest browser test summary (source: browser-results.json)
+UTC: 2026-11-06T12:59:11.309Z
+Chrome: 156.0.8078.81
 PASS UI01 Trang giới thiệu, palette thống nhất và mobile không tràn ngang
 PASS UI02 Đăng nhập sai, đăng nhập 5 vai trò và đăng xuất thật
 PASS P-quanly Mở toàn bộ trang được phép: quanly
@@ -30,4 +28,28 @@ PASS UI21 Phản hồi polling cũ không xóa dữ liệu vừa lưu trên màn
 PASS UI22 Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất
 PASS UI23 Mất kết nối khi polling có thông báo và kết nối lại xóa thông báo
 PASS UI13 Màn hình khóa học rỗng vẫn hiển thị, dữ liệu trình duyệt cũ không phá trang
-27/27 kiểm thử trình duyệt đạt
+PASS UI24 Bộ lọc khóa học, tìm kiếm và trạng thái không có kết quả
+PASS UI25 Chi tiết cả 6 khóa học, học phí, lịch lớp và mã khóa không tồn tại
+PASS UI26 Nút chi tiết và tư vấn giữ đúng khóa đã chọn khi đổi route
+PASS UI27 Giảng viên lấy từ dữ liệu thật, không công khai người đã nghỉ và thông tin liên hệ
+PASS UI28 Trang công khai ở 320/390/768/1440px, menu mobile, Escape và FAQ
+PASS UI29 Lọc lịch khai giảng theo cả 4 cơ sở và trạng thái lớp rỗng
+PASS UI30 Bài thử: chặn câu bỏ trống, giữ đáp án khi quay lại, chấm 0 điểm và làm lại
+PASS UI31 Bài thử 10 điểm với mục tiêu IELTS dẫn đúng khóa và form tư vấn
+PASS UI32 Hoàn thành bài thử trên màn hình 320px, xem đáp án và gợi ý B2
+PASS UI33 Hiện/ẩn mật khẩu, đăng nhập bằng Enter và nhận diện cổng nhân viên
+PASS UI34 Toàn bộ màn hình theo 5 tài khoản ở desktop, tablet và điện thoại
+PASS UI35 Cả 5 tab danh mục và các dialog tạo mới trên điện thoại, hủy không ghi dữ liệu
+PASS UI36 Từ chối yêu cầu qua dialog mobile có lý do và xác nhận
+PASS UI37 Nút in báo cáo, chế độ in ẩn điều hướng và tạo được PDF
+PASS UI38 Điều hướng tuần và lọc cơ sở của thời khóa biểu trên điện thoại
+PASS UI39 Nhân viên cập nhật trạng thái tư vấn và dữ liệu giữ nguyên khi tải lại
+PASS UI40 Thanh điều hướng không che tiến độ và phần đầu kết quả bài thử
+PASS UI41 Trang riêng 4 cơ sở, bản đồ đúng địa chỉ và bố cục 320–1440px
+PASS UI42 Tư vấn từ lớp giữ khóa/cơ sở/lớp, lưu giờ liên hệ và hiển thị xác nhận
+PASS UI43 Bài luyện thử của 6 chương trình có phản hồi và tải đúng tài liệu
+PASS UI44 URL công khai có tiêu đề và chia sẻ riêng, liên kết cũ còn hoạt động
+PASS UI45 Tạm dừng chuyển động được ghi nhớ và tôn trọng thiết lập giảm chuyển động
+PASS UI46 Lớp vừa đóng đăng ký khi đang điền form được cảnh báo, không tự đổi thành tư vấn chung
+PASS UI47 Chế độ vận hành ẩn tài khoản/reset demo và giữ cấu hình liên hệ sau đăng nhập
+51/51 passed; 0 failed

@@ -380,7 +380,7 @@ test("C03: hủy cá nhân, hoàn số dư có nhật ký; không hoàn hai lầ
         method: "Tiền mặt",
         note: "lặp",
       }),
-    /số dư/,
+    /số dư/i,
   );
   assert.throws(() => R.cancelEnrollment(db, manager, e.id, "lặp"), /đã đóng/);
 });

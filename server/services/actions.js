@@ -1,4 +1,5 @@
 import { R, RuleError } from "../../src/lib/rules.js";
+import { scopeData } from "../../src/lib/branch-access.js";
 export const actions = Object.fromEntries(
   [
     "createClass",
@@ -37,9 +38,9 @@ export function dispatch(db, user, action, args) {
   return actions[action](db, user, ...args);
 }
 export function visibleData(db, user) {
-  const out = structuredClone(db);
+  const out = scopeData(db, user);
   out.users =
-    user?.role === "manager"
+    ["manager", "branch_manager"].includes(user?.role)
       ? out.users
       : out.users.filter((u) => u.id === user?.id);
   for (const u of out.users) {
@@ -63,41 +64,17 @@ export function visibleData(db, user) {
     out.classes = out.classes.filter((c) =>
       ["Mở đăng ký", "Đang học"].includes(c.status),
     );
-    out.teachers = out.teachers.map(({ id, name, specialty }) => ({
-      id,
-      name,
-      specialty,
-    }));
-  } else if (user.role === "teacher") {
-    out.sessions = out.sessions.filter((s) => s.teacherId === user.teacherId);
-    const classIds = new Set(out.sessions.map((s) => s.classId)),
-      sessionIds = new Set(out.sessions.map((s) => s.id));
-    out.classes = out.classes.filter((c) => classIds.has(c.id));
-    out.requests = out.requests.filter(
-      (r) => r.type === "makeup" && sessionIds.has(r.data.targetSessionId),
-    );
-    const eids = new Set(out.requests.map((r) => r.data.enrollmentId));
-    out.enrollments = out.enrollments
-      .filter((e) => classIds.has(e.classId) || eids.has(e.id))
-      .map((e) => ({ ...e, fee: 0, billableFee: 0 }));
-    const sids = new Set(out.enrollments.map((e) => e.studentId));
-    out.students = out.students
-      .filter((s) => sids.has(s.id))
-      .map(({ id, code, name, level, status }) => ({
+    out.teachers = out.teachers
+      .filter((t) => t.status === "Đang dạy")
+      .map(({ id, name, specialty }) => ({
         id,
-        code,
         name,
-        level,
-        status,
-        balance: 0,
+        specialty,
       }));
-    out.attendance = out.attendance.filter((a) => sessionIds.has(a.sessionId));
-    out.payments = [];
-    out.reservations = [];
   }
-  if (user?.role !== "manager") out.audit = [];
-  if (!["manager", "enroll"].includes(user?.role)) out.leads = [];
-  if (!["manager", "accountant"].includes(user?.role)) {
+  if (!["manager", "branch_manager"].includes(user?.role)) out.audit = [];
+  if (!["manager", "branch_manager", "enroll"].includes(user?.role)) out.leads = [];
+  if (!["manager", "branch_manager", "accountant"].includes(user?.role)) {
     out.refunds = [];
     out.balanceLedger = [];
   }

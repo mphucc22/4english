@@ -1,4 +1,9 @@
 node_modules/
 dist/
-data/*.sqlite*
+*.sqlite*
 *.log
+.env
+.env.*
+!.env.example
+!.env.*.example
+test-results/UI*-failure.png

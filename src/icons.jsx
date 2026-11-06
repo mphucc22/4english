@@ -1,4 +1,14 @@
 const paths = {
+  menu: "M4 6h16 M4 12h16 M4 18h16",
+  clock: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20 M12 6v6l4 2",
+  chat: "M21 11a9 9 0 0 1-9 9H3l2-5a9 9 0 1 1 16-4 M8 10h8 M8 14h5",
+  sparkles:
+    "m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3z M20 2v4 M18 4h4 M3 18v4 M1 20h4",
+  "arrow-left": "M20 12H4 m6-6-6 6 6 6",
+  eye: "M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12 M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6",
+  "eye-off":
+    "m3 3 18 18 M10 5a13 13 0 0 1 2 0c6 0 10 7 10 7a21 21 0 0 1-4 5 M6 6a22 22 0 0 0-4 6s4 7 10 7a13 13 0 0 0 5-1 M10 10a3 3 0 0 0 4 4",
+  chevron: "m6 9 6 6 6-6",
   dashboard: "M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z",
   classes: "M4 21V5l8-3 8 3v16 M8 9h1 M15 9h1 M8 13h1 M15 13h1 M10 21v-4h4v4",
   timetable:
@@ -49,21 +59,20 @@ export function Icon({ name = "book", size = 20, className = "" }) {
 }
 export function Brand({ compact = false, dark = false }) {
   return (
-    <a href="#/" className={`brand ${dark ? "brand-dark" : ""}`}>
+    <a href="/" className={`brand ${dark ? "brand-dark" : ""}`}>
       <span className="brand-mark">
         <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
           <path
-            d="m8 26 10-20 10 20 M12 20h12 M18 6v21"
+            d="M20 7 9 22h18 M22 7v23"
             stroke="currentColor"
             strokeWidth="2.6"
             strokeLinecap="round"
           />
-          <path d="M8 30h20" stroke="currentColor" strokeWidth="2" />
         </svg>
       </span>
       <span>
         <b>
-          ABC<span className="brand-english"> English</span>
+          4<span className="brand-english">ENGLISH</span>
         </b>
         {!compact && <small>HỌC TỰ TIN · VƯƠN XA HƠN</small>}
       </span>

@@ -1,0 +1,45 @@
+﻿Mã ca,Nội dung,Kết quả
+UI01,"Trang giới thiệu, palette thống nhất và mobile không tràn ngang",Passed
+UI02,"Đăng nhập sai, đăng nhập 5 vai trò và đăng xuất thật",Passed
+P-quanly,Mở toàn bộ trang được phép: quanly,Passed
+P-ghidanh,Mở toàn bộ trang được phép: ghidanh,Passed
+P-ketoan,Mở toàn bộ trang được phép: ketoan,Passed
+P-gv1,Mở toàn bộ trang được phép: gv1,Passed
+UI03,Quản trị desktop/mobile; giáo viên URL nhân viên bị chặn,Passed
+UI04,"CRUD học viên qua form, khoảng trắng bị chặn và hủy dialog không ghi dữ liệu",Passed
+UI05,Tạo lớp → xếp lịch → mở đăng ký → ghi danh qua web,Passed
+UI06,"Thu phí từ kế toán, không khóa khoản nợ lớp hoàn thành",Passed
+UI07,Nhân viên mới được lưu backend và đăng nhập bằng mật khẩu mới,Passed
+UI08,Gửi tư vấn từ public hiển thị cho nhân viên ghi danh,Passed
+UI09,Duyệt chuyển lớp giữ lịch sử; bảo lưu và học lại dùng tín dụng một lần,Passed
+UI10,Điểm danh thật chỉ liệt kê lớp chạy; chỉnh sửa buổi giữ lịch sử,Passed
+UI11,"Hai tab sửa: tab cũ nhận lỗi xung đột, không báo đã lưu",Passed
+UI12,Sao lưu và khôi phục JSON qua giao diện,Passed
+UI14,"Học bù cùng buổi vắng của hai học viên: form không ẩn nhầm, duyệt và điểm danh học bù",Passed
+UI15,Hủy đăng ký cá nhân và hoàn số dư qua web có sổ chi,Passed
+UI16,Hủy phiếu thu sai qua web giữ chứng từ và khôi phục nợ,Passed
+UI17,Đổi mật khẩu tại sidebar xác thực với backend,Passed
+UI18,Hủy lớp chưa khai giảng trả tiền vào số dư đúng một lần,Passed
+UI19,Origin HTTP không secure vẫn lưu dữ liệu và hiển thị toast (proxy tới backend thật),Passed
+UI20,Mất phản hồi thu phí rồi làm mới: retry không lập thêm phiếu,Passed
+UI21,Phản hồi polling cũ không xóa dữ liệu vừa lưu trên màn hình,Passed
+UI22,Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất,Passed
+UI23,Mất kết nối khi polling có thông báo và kết nối lại xóa thông báo,Passed
+UI13,"Màn hình khóa học rỗng vẫn hiển thị, dữ liệu trình duyệt cũ không phá trang",Passed
+UI24,"Bộ lọc khóa học, tìm kiếm và trạng thái không có kết quả",Passed
+UI25,"Chi tiết cả 6 khóa học, học phí, lịch lớp và mã khóa không tồn tại",Passed
+UI26,Nút chi tiết và tư vấn giữ đúng khóa đã chọn khi đổi route,Passed
+UI27,"Giảng viên lấy từ dữ liệu thật, không công khai người đã nghỉ và thông tin liên hệ",Passed
+UI28,"Trang công khai ở 320/390/768/1440px, menu mobile, Escape và FAQ",Passed
+UI29,Lọc lịch khai giảng theo cả 4 cơ sở và trạng thái lớp rỗng,Passed
+UI30,"Bài thử: chặn câu bỏ trống, giữ đáp án khi quay lại, chấm 0 điểm và làm lại",Passed
+UI31,Bài thử 10 điểm với mục tiêu IELTS dẫn đúng khóa và form tư vấn,Passed
+UI32,"Hoàn thành bài thử trên màn hình 320px, xem đáp án và gợi ý B2",Passed
+UI33,"Hiện/ẩn mật khẩu, đăng nhập bằng Enter và nhận diện cổng nhân viên",Passed
+UI34,"Toàn bộ màn hình theo 5 tài khoản ở desktop, tablet và điện thoại",Passed
+UI35,"Cả 5 tab danh mục và các dialog tạo mới trên điện thoại, hủy không ghi dữ liệu",Passed
+UI36,Từ chối yêu cầu qua dialog mobile có lý do và xác nhận,Passed
+UI37,"Nút in báo cáo, chế độ in ẩn điều hướng và tạo được PDF",Passed
+UI38,Điều hướng tuần và lọc cơ sở của thời khóa biểu trên điện thoại,Passed
+UI39,Nhân viên cập nhật trạng thái tư vấn và dữ liệu giữ nguyên khi tải lại,Passed
+UI40,Thanh điều hướng không che tiến độ và phần đầu kết quả bài thử,Passed

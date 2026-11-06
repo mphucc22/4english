@@ -243,6 +243,7 @@ test("API10: lead public kiểm tra đầu vào, nhân viên ghi danh đọc đ�
         name: "Tư vấn API",
         phone: "0901234567",
         courseId: "co2",
+        branchId: "br1",
       })
     ).status,
     200,
@@ -302,7 +303,7 @@ test("API13: reset demo giữ tài khoản và giáo viên đã thêm", async ()
   const a = await command(s, "saveMaster", [
     "teachers",
     null,
-    { name: "Teacher Reset", status: "Đang dạy", specialty: "Giao tiếp" },
+    { name: "Teacher Reset", status: "Đang dạy", specialty: "Giao tiếp", branchIds: ["br1"] },
   ]);
   assert.equal(a.status, 200);
   s = { ...a.data, cookie: s.cookie };
@@ -315,6 +316,7 @@ test("API13: reset demo giữ tài khoản và giáo viên đã thêm", async ()
       password: "abcdef",
       role: "teacher",
       teacherId: teacher.id,
+      branchIds: ["br1"],
     },
   ]);
   assert.equal(b.status, 200);

@@ -15,12 +15,14 @@ import { R, U, CFG } from "../lib/rules.js";
 import { by, vnd, dmy, enLabel } from "../lib/util.js";
 
 import { Hint, seats } from "./shared.jsx";
+import { canTeacherWorkAt } from "../lib/teacher-identity.js";
 
 export function ScheduleForm({ id }) {
   const { db, user, execute } = useStore();
   const c = by(db, "classes", id),
     t = by(db, "terms", c.termId),
-    wd = c.weekdays || [];
+    wd = c.weekdays || [],
+    teachers = db.teachers.filter((teacher) => canTeacherWorkAt(db, teacher.id, c.branchId));
   return (
     <Form
       title={`Xếp lịch – ${c.code}`}
@@ -88,12 +90,13 @@ export function ScheduleForm({ id }) {
             required
             name="teacherId"
             defaultValue={c.teacherId}
-            options={db.teachers
-              .filter((x) => x.status === "Đang dạy")
+            ph="— Chọn giáo viên phù hợp cơ sở —"
+            options={teachers
               .map((x) => [x.id, `${x.name} (${x.specialty})`])}
           />
         </Fld>
       </Row2>
+      {!teachers.length && <p className="mb-4 text-sm text-amber-800">Chưa có giáo viên đang dạy được phân công tại cơ sở này. Quản trị cần cập nhật Danh mục → Giáo viên trước khi xếp lịch.</p>}
       <Fld
         label={`Ngày khai giảng (trong ${t.name}: ${dmy(t.start)} – ${dmy(t.end)})`}
       >

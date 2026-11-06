@@ -15,11 +15,13 @@ import { R, U, CFG } from "../lib/rules.js";
 import { by, vnd, dmy, enLabel } from "../lib/util.js";
 
 import { Hint, seats } from "./shared.jsx";
+import { canTeacherWorkAt } from "../lib/teacher-identity.js";
 
 export function SessionEditForm({ sid }) {
   const { db, execute } = useStore(),
     s = by(db, "sessions", sid),
-    c = by(db, "classes", s.classId);
+    c = by(db, "classes", s.classId),
+    teachers = db.teachers.filter((teacher) => canTeacherWorkAt(db, teacher.id, c.branchId));
   return (
     <Form
       title={`Điều chỉnh buổi ${s.no} – ${c.code}`}
@@ -58,11 +60,12 @@ export function SessionEditForm({ sid }) {
           required
           name="teacherId"
           defaultValue={s.teacherId}
-          options={db.teachers
-            .filter((t) => t.status === "Đang dạy")
+          ph="— Chọn giáo viên phù hợp cơ sở —"
+          options={teachers
             .map((t) => [t.id, t.name])}
         />
       </Fld>
+      {!teachers.length && <p className="mb-4 text-sm text-amber-800">Chưa có giáo viên phù hợp cơ sở này. Quản trị cần phân công giáo viên tại Danh mục → Giáo viên.</p>}
       <Fld label="Lý do thay đổi">
         <Area required name="note" />
       </Fld>

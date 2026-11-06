@@ -1,0 +1,36 @@
+{
+  "tested_at": "2026-10-18T16:36:08.793Z",
+  "browser": "141.0.7390.37",
+  "build": "Passed",
+  "business_rule_tests": {
+    "total": 23,
+    "passed": 23
+  },
+  "node_api_logic_tests": {
+    "total": 43,
+    "passed": 43
+  },
+  "gui_tests": {
+    "total": 44,
+    "passed": 44,
+    "failed": 0
+  },
+  "screen_checks": 115,
+  "viewports": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "accounts": [
+    "quanly",
+    "ghidanh",
+    "ketoan",
+    "gv1",
+    "gv2"
+  ],
+  "limitations": [
+    "Chromium headless trên Linux; chưa kiểm tra Safari/iPhone thật hoặc Chrome/Edge trên Windows.",
+    "Kiểm tra GUI dùng API và SQLite thử nghiệm riêng; bản xem trước trực tuyến chỉ xem dữ liệu mẫu."
+  ]
+}

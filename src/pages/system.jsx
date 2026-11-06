@@ -98,7 +98,7 @@ function RestoreForm() {
         bảng và đúng liên kết. Nếu giáo viên liên kết tài khoản không còn trong
         tệp, hệ thống từ chối khôi phục.
       </Note>
-      <Fld label="Tệp sao lưu ABC-English-v2">
+      <Fld label="Tệp sao lưu 4ENGLISH (.json)">
         <In
           required
           type="file"
@@ -156,7 +156,7 @@ export function System() {
       const a = document.createElement("a");
       a.href = url;
       a.download =
-        "ABC-English-Backup-" + new Date().toISOString().slice(0, 10) + ".json";
+        "4ENGLISH-Backup-" + new Date().toISOString().slice(0, 10) + ".json";
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       toast("Đã tạo tệp sao lưu.");

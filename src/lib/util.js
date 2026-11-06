@@ -4,7 +4,8 @@ export const by = (db, col, id) => db[col].find((x) => x.id === id) || {};
 export const vnd = U.vnd;
 export const dmy = U.dmy;
 export const ROLE = {
-  manager: "Quản lý đào tạo",
+  manager: "Quản trị toàn hệ thống",
+  branch_manager: "Quản lý cơ sở",
   enroll: "Nhân viên ghi danh",
   accountant: "Kế toán",
   teacher: "Giáo viên",

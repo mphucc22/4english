@@ -8,15 +8,20 @@ import {
   useState,
 } from "react";
 import { request, newRequestId } from "./lib/api.js";
+import { scopeData } from "./lib/branch-access.js";
+import { parseLocation } from "./lib/navigation.js";
 const Ctx = createContext(null);
 export const useStore = () => useContext(Ctx);
 export function StoreProvider({ children }) {
+  const [route] = useHash();
   const [state, setState] = useState(null),
+    [selectedBranchId, setSelectedBranchId] = useState(""),
     [error, setError] = useState(""),
     [connectionError, setConnectionError] = useState(""),
     [toasts, setToasts] = useState([]),
     [modal, setModal] = useState(null);
   const current = useRef(null),
+    branchContext = useRef(""),
     modalRevision = useRef(null),
     authEpoch = useRef(0),
     authPending = useRef(false),
@@ -30,7 +35,17 @@ export function StoreProvider({ children }) {
         previous.db.meta.revision > s.db.meta.revision
       )
         return;
+      s = { ...s, site: s.site || previous?.site || { demoMode: true, contact: {} } };
       current.current = s;
+      if (
+        previous?.user?.id !== s.user?.id ||
+        (branchContext.current && !s.db.branches.some((branch) => branch.id === branchContext.current))
+      ) {
+        setSelectedBranchId("");
+        branchContext.current = "";
+        setModal(null);
+        modalRevision.current = null;
+      }
       setState(s);
       setError("");
       setConnectionError("");
@@ -81,6 +96,13 @@ export function StoreProvider({ children }) {
     setModal(null);
     modalRevision.current = null;
   }, []);
+  const setBranchId = useCallback((id) => {
+    if (id && !current.current?.db.branches.some((branch) => branch.id === id)) return;
+    branchContext.current = id;
+    setSelectedBranchId(id);
+    setModal(null);
+    modalRevision.current = null;
+  }, []);
   const handleFailure = useCallback(
     async (e) => {
       if (e.status === 409) {
@@ -100,13 +122,14 @@ export function StoreProvider({ children }) {
       const s = current.current,
         revision = modalRevision.current ?? s.db.meta.revision,
         // Retry cùng nội dung giữ mã dù polling đã tăng revision.
-        key = JSON.stringify([s.user.id, action, args]);
+        branchId = branchContext.current,
+        key = JSON.stringify([s.user.id, branchId, action, args]);
       const requestId = retries.current.get(key) || newRequestId();
       retries.current.set(key, requestId);
       try {
         const data = await request("command", {
           csrf: s.csrf,
-          body: { action, args, revision, requestId },
+          body: { action, args, revision, requestId, branchId },
         });
         apply(data);
         retries.current.delete(key);
@@ -194,12 +217,29 @@ export function StoreProvider({ children }) {
     () => act(() => special("reset", { confirm: "RESET DEMO" })),
     [act, special],
   );
+  const branches = state?.db.branches || [];
+  const branchId = branches.some((branch) => branch.id === selectedBranchId)
+    ? selectedBranchId
+    : state?.user?.role !== "manager" && branches.length === 1
+      ? branches[0].id
+      : "";
+  branchContext.current = branchId;
+  const displayedDb = useMemo(
+    () => state && route === "app" && branchId
+      ? scopeData(state.db, state.user, branchId)
+      : state?.db,
+    [state, route, branchId],
+  );
   const value = useMemo(
     () =>
       state && {
-        db: state.db,
+        db: displayedDb,
+        branches,
+        branchId,
+        setBranchId,
         ver: state.db.meta.revision,
         user: state.user,
+        site: state.site,
         execute,
         toast,
         act,
@@ -214,6 +254,10 @@ export function StoreProvider({ children }) {
       },
     [
       state,
+      displayedDb,
+      branches,
+      branchId,
+      setBranchId,
       execute,
       toast,
       act,
@@ -230,8 +274,8 @@ export function StoreProvider({ children }) {
   if (!state)
     return (
       <div className="boot-screen">
-        <div className="brand-mark">A</div>
-        <h1>ABC English</h1>
+        <div className="brand-mark">4</div>
+        <h1>4ENGLISH</h1>
         <p>{error || "Đang kết nối dữ liệu trung tâm…"}</p>
         {error && (
           <button onClick={() => refresh().catch((e) => setError(e.message))}>
@@ -272,12 +316,17 @@ export function StoreProvider({ children }) {
     </Ctx.Provider>
   );
 }
-export function useHash() {
-  const [h, setH] = useState(location.hash);
+export function useRoute() {
+  const [route, setRoute] = useState(() => parseLocation(location));
   useEffect(() => {
-    const fn = () => setH(location.hash);
+    const fn = () => setRoute(parseLocation(location));
     addEventListener("hashchange", fn);
-    return () => removeEventListener("hashchange", fn);
+    addEventListener("popstate", fn);
+    return () => {
+      removeEventListener("hashchange", fn);
+      removeEventListener("popstate", fn);
+    };
   }, []);
-  return h.replace(/^#\/?/, "").split("/");
+  return route;
 }
+export function useHash() { return useRoute().segments; }

@@ -37,7 +37,7 @@ export function ProfileView({ id }) {
         <dt>Số dư học phí</dt>
         <dd>
           {vnd(s.balance)}{" "}
-          {user.role === "manager" && s.balance > 0 && (
+          {R.can(user, "approve") && s.balance > 0 && (
             <Btn
               sm
               v="ghost"

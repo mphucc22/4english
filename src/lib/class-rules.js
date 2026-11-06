@@ -1,3 +1,5 @@
+import { canTeacherWorkAt } from "./teacher-identity.js";
+
 /** Dịch vụ Class: được rules.js khởi tạo vào đối tượng R. */
 export function installClassRules(R, U, CFG, fail) {
   const LIVE = R.LIVE;
@@ -64,6 +66,8 @@ export function installClassRules(R, U, CFG, fail) {
       if (room.branchId !== c.branchId)
         fail("Phòng học không thuộc chi nhánh của lớp.");
       if (tch.status !== "Đang dạy") fail("Giáo viên này hiện không nhận lớp.");
+      if (!canTeacherWorkAt(db, tch.id, c.branchId))
+        fail("Giáo viên chưa được phân công công tác tại cơ sở của lớp. Hãy cập nhật hồ sơ giáo viên trước khi xếp lịch.");
       if (
         !R.validDate(p.startDate) ||
         p.startDate < term.start ||

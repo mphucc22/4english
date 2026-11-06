@@ -4,6 +4,7 @@ import {
   timingSafeEqual,
   randomBytes,
 } from "node:crypto";
+import { isLoginAllowed } from "../src/lib/teacher-identity.js";
 export const digest = (s) => createHash("sha256").update(s).digest("hex");
 export function verifyPassword(password, hash) {
   try {
@@ -28,8 +29,9 @@ export function authFor(database, req) {
     .prepare("SELECT * FROM auth_sessions WHERE token=? AND expires>?")
     .get(digest(value), Date.now());
   if (!session) return null;
-  const user = database.load().users.find((u) => u.id === session.user_id);
-  return user ? { user, session } : null;
+  const db = database.load();
+  const user = db.users.find((u) => u.id === session.user_id);
+  return isLoginAllowed(db, user) ? { user, session } : null;
 }
 export function newSession(database, userId) {
   const token = randomBytes(32).toString("hex"),

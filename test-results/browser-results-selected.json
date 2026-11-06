@@ -1,14 +1,136 @@
 {
-  "at": "2026-10-05T04:05:46.151Z",
-  "browser": "Chromium",
+  "at": "2026-11-06T12:52:07.040Z",
+  "browser": "156.0.8078.81",
+  "screenCoverage": [
+    {
+      "account": "public",
+      "route": "/co-so/br1",
+      "width": 1440
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br1",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br1",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br2",
+      "width": 1440
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br2",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br2",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br3",
+      "width": 1440
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br3",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br3",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br4",
+      "width": 1440
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br4",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br4",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co1",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co2",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co3",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co4",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co5",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co6",
+      "width": 390
+    }
+  ],
   "results": [
     {
-      "id": "UI22",
-      "name": "Polling đến muộn không đảo trạng thái đăng nhập hoặc đăng xuất",
+      "id": "UI08",
+      "name": "Gửi tư vấn từ public hiển thị cho nhân viên ghi danh",
+      "status": "Passed"
+    },
+    {
+      "id": "UI26",
+      "name": "Nút chi tiết và tư vấn giữ đúng khóa đã chọn khi đổi route",
+      "status": "Passed"
+    },
+    {
+      "id": "UI31",
+      "name": "Bài thử 10 điểm với mục tiêu IELTS dẫn đúng khóa và form tư vấn",
+      "status": "Passed"
+    },
+    {
+      "id": "UI41",
+      "name": "Trang riêng 4 cơ sở, bản đồ đúng địa chỉ và bố cục 320–1440px",
+      "status": "Passed"
+    },
+    {
+      "id": "UI42",
+      "name": "Tư vấn từ lớp giữ khóa/cơ sở/lớp, lưu giờ liên hệ và hiển thị xác nhận",
+      "status": "Passed"
+    },
+    {
+      "id": "UI43",
+      "name": "Bài luyện thử của 6 chương trình có phản hồi và tải đúng tài liệu",
+      "status": "Passed"
+    },
+    {
+      "id": "UI44",
+      "name": "URL công khai có tiêu đề và chia sẻ riêng, liên kết cũ còn hoạt động",
       "status": "Passed"
     }
   ],
-  "total": 1,
-  "passed": 1,
+  "total": 7,
+  "passed": 7,
   "failed": 0
 }

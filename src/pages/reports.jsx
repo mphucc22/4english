@@ -120,7 +120,7 @@ export function Reports() {
         </b>
       </Card>
       <Card>
-        Tỷ lệ chuyên cần toàn hệ thống:{" "}
+        Tỷ lệ chuyên cần trong phạm vi đang xem:{" "}
         <b>{r.attRate == null ? "—" : Math.round(r.attRate * 100) + "%"}</b>
       </Card>
     </>

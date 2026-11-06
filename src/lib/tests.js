@@ -4,9 +4,10 @@ import { Seed } from "./seed.js";
  * Mỗi ca chạy trên một CSDL mới, không ảnh hưởng dữ liệu thật. */
 const Tests = (() => {
   const S = { id: "sys", name: "QL", role: "manager" };
-  const ENR = { id: "e", name: "GhiDanh", role: "enroll" };
-  const TCH = { id: "t", name: "GV", role: "teacher", teacherId: "gv1" };
-  const ACC = { id: "a", name: "KT", role: "accountant" };
+  const branchIds = ["br1", "br2", "br3", "br4"];
+  const ENR = { id: "e", name: "GhiDanh", role: "enroll", branchIds };
+  const TCH = { id: "t", name: "GV", role: "teacher", teacherId: "gv1", branchIds };
+  const ACC = { id: "a", name: "KT", role: "accountant", branchIds };
 
   const fresh = () => Seed.minimal();
   const sched = (db, o = {}) => ({
@@ -42,6 +43,7 @@ const Tests = (() => {
         email: "",
         level: "A1",
         balance: 0,
+        branchId: c.branchId,
         status: "Hoạt động",
       };
       db.students.push(st);
@@ -110,6 +112,7 @@ const Tests = (() => {
         db.students.push({
           id: "z",
           code: "Z",
+          branchId: "br1",
           name: "Z",
           level: "A1",
           balance: 0,
@@ -198,6 +201,7 @@ const Tests = (() => {
         db.students.push({
           id: "h",
           code: "H",
+          branchId: "br1",
           name: "H",
           level: "A1",
           balance: 0,
@@ -635,6 +639,7 @@ const Tests = (() => {
           name: "Nhân viên mới",
           username: "nv.moi",
           role: "enroll",
+          branchIds: ["br1"],
           password: "abcdef",
         });
         throws(
@@ -643,6 +648,7 @@ const Tests = (() => {
               name: "Trùng",
               username: "nv.moi",
               role: "enroll",
+              branchIds: ["br1"],
               password: "abcdef",
             }),
           /đã tồn tại/,
@@ -653,6 +659,7 @@ const Tests = (() => {
               name: "Yếu",
               username: "matkhau",
               role: "enroll",
+              branchIds: ["br1"],
               password: "123",
             }),
           /Mật khẩu/,
@@ -666,6 +673,7 @@ const Tests = (() => {
               name: me.name,
               username: me.username,
               role: "enroll",
+              branchIds: ["br1"],
             }),
           /tự hạ quyền/,
         );

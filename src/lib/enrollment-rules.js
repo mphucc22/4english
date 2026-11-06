@@ -42,6 +42,7 @@ export function installEnrollmentRules(R, U, CFG, fail) {
       id: U.id("en"),
       studentId,
       classId,
+      branchId: c.branchId,
       fee: R.by(db, "courses", c.courseId).fee,
       status: "Chờ đóng phí",
       createdAt: U.today(),
@@ -70,6 +71,7 @@ export function installEnrollmentRules(R, U, CFG, fail) {
       no: "PT" + String(db.meta.receiptSeq).padStart(5, "0"),
       enrollmentId: e.id,
       studentId: e.studentId,
+      branchId: e.branchId || R.by(db, "classes", e.classId)?.branchId,
       amount,
       method,
       type,
@@ -96,8 +98,13 @@ export function installEnrollmentRules(R, U, CFG, fail) {
         fail(`Số tiền vượt quá khoản còn phải đóng (${U.vnd(R.due(db, e))}).`);
       if (method === "Số dư") {
         const st = R.by(db, "students", e.studentId);
-        if (amount > st.balance)
-          fail(`Số dư của học viên không đủ (${U.vnd(st.balance)}).`);
+        const available = R.branchBalance(
+          db,
+          st.id,
+          e.branchId || R.by(db, "classes", e.classId)?.branchId,
+        );
+        if (amount > available)
+          fail(`Số dư tại cơ sở của lớp không đủ (${U.vnd(available)}).`);
         R.balance(db, st.id, -amount, "Thu học phí từ số dư", e.id);
         return R._pay(db, e, amount, method, "Trừ số dư", note, u.name);
       }

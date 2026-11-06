@@ -55,3 +55,15 @@ Test case bổ sung trước buổi bảo vệ: chạy trên máy Windows của 
 - UI23: làm thất bại request polling, kiểm tra thông báo trên mobile rồi kết nối lại tới API thật.
 
 Network fixture dùng Playwright giữ/abort phản hồi của backend thật để tái hiện lỗi; không thay bằng dữ liệu giả. Tham khảo BO_SUNG_V2.1.md và kết quả thực thi trong test-results.
+
+## Website 4ENGLISH và Google Maps — 06/11/2026
+
+- UI41: mở trực tiếp cả 4 trang cơ sở, lọc đúng lớp, kiểm tra địa chỉ trong URL bản đồ/chỉ đường và CSP; bố cục 320/390/1440 px.
+- UI42: đi từ lớp ở trang khóa học/cơ sở đến tư vấn, giữ đúng khóa–cơ sở–lớp, chọn giờ liên hệ, gửi và đối chiếu biên nhận với SQLite; đổi cơ sở phải xóa lựa chọn lớp cũ.
+- UI43: sáu bài luyện thử có phản hồi sai/đúng và tải đúng tài liệu; không tràn ngang điện thoại.
+- UI44: URL sạch, title/Open Graph/canonical riêng, không lập chỉ mục demo, liên kết hash cũ và cơ sở không tồn tại.
+- UI45: tạm dừng được ghi nhớ sau tải lại, bật lại, tôn trọng giảm chuyển động của hệ thống.
+- UI46: lớp ngừng nhận đăng ký trong lúc khách đang điền form; giữ dữ liệu nhập, cảnh báo và chặn gửi đến khi khách tự chọn lại hoặc bỏ lớp.
+- UI47: cấu hình vận hành ở server SQLite riêng; footer/liên hệ đúng cấu hình, không hiện tài khoản mẫu hay reset demo, cấu hình được giữ sau đăng nhập.
+- API: từ chối lớp không thuộc đúng khóa/cơ sở, lớp đã đóng, trường quá dài hoặc URL nhúng Google không hợp lệ; dữ liệu không bị ghi một phần; chỉ quản trị toàn hệ thống sửa hồ sơ cơ sở.
+- Tích hợp Maps: các ca tự động chặn mạng Google và kiểm tra thuộc tính iframe/URL. Xác minh dịch vụ thật chạy riêng, kiểm tra HTTP/ô bản đồ/CSP và ảnh chụp ghim; lưu `test-results/public-live-map.json` và `.png`.

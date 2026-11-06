@@ -1,6 +1,673 @@
 {
-  "at": "2026-10-05T04:05:22.754Z",
-  "browser": "Chromium",
+  "at": "2026-11-06T12:59:11.309Z",
+  "browser": "156.0.8078.81",
+  "screenCoverage": [
+    {
+      "account": "public",
+      "route": "#/",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "#/",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "#/",
+      "width": 768
+    },
+    {
+      "account": "public",
+      "route": "#/",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/dashboard",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/classes",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/timetable",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/students",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/enrollments",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/payments",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/requests",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/attendance",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/staff",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/master",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/leads",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/reports",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/system",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_0e2b384f-d507-4bc0-8d5d-b1f7cf580468",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_e5c82e06-d1b6-47af-a3c5-acf762a82db9",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_ee66e838-95f7-436a-b59f-4c2fa4807df5",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_e1971c94-acd1-4180-92b7-ed35b3962609",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_588685d4-4c3a-4d70-a330-5b9bb85d37f6",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_1e8383a1-060d-4071-9331-27ca96380df2",
+      "width": 1440
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/dashboard",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/classes",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/timetable",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/students",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/enrollments",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/payments",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/requests",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/attendance",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/staff",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/master",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/leads",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/reports",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/system",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_0e2b384f-d507-4bc0-8d5d-b1f7cf580468",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_e5c82e06-d1b6-47af-a3c5-acf762a82db9",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_ee66e838-95f7-436a-b59f-4c2fa4807df5",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_e1971c94-acd1-4180-92b7-ed35b3962609",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_588685d4-4c3a-4d70-a330-5b9bb85d37f6",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_1e8383a1-060d-4071-9331-27ca96380df2",
+      "width": 768
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/dashboard",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/classes",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/timetable",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/students",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/enrollments",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/payments",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/requests",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/attendance",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/staff",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/master",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/leads",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/reports",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/system",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_0e2b384f-d507-4bc0-8d5d-b1f7cf580468",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_e5c82e06-d1b6-47af-a3c5-acf762a82db9",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_ee66e838-95f7-436a-b59f-4c2fa4807df5",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_e1971c94-acd1-4180-92b7-ed35b3962609",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_588685d4-4c3a-4d70-a330-5b9bb85d37f6",
+      "width": 390
+    },
+    {
+      "account": "quanly",
+      "route": "#/app/class/cl_1e8383a1-060d-4071-9331-27ca96380df2",
+      "width": 390
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/dashboard",
+      "width": 1440
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/students",
+      "width": 1440
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/classes",
+      "width": 1440
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/enrollments",
+      "width": 1440
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/requests",
+      "width": 1440
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/timetable",
+      "width": 1440
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/leads",
+      "width": 1440
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/dashboard",
+      "width": 768
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/students",
+      "width": 768
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/classes",
+      "width": 768
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/enrollments",
+      "width": 768
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/requests",
+      "width": 768
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/timetable",
+      "width": 768
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/leads",
+      "width": 768
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/dashboard",
+      "width": 390
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/students",
+      "width": 390
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/classes",
+      "width": 390
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/enrollments",
+      "width": 390
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/requests",
+      "width": 390
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/timetable",
+      "width": 390
+    },
+    {
+      "account": "ghidanh",
+      "route": "#/app/leads",
+      "width": 390
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/dashboard",
+      "width": 1440
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/payments",
+      "width": 1440
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/enrollments",
+      "width": 1440
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/classes",
+      "width": 1440
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/reports",
+      "width": 1440
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/dashboard",
+      "width": 768
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/payments",
+      "width": 768
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/enrollments",
+      "width": 768
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/classes",
+      "width": 768
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/reports",
+      "width": 768
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/dashboard",
+      "width": 390
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/payments",
+      "width": 390
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/enrollments",
+      "width": 390
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/classes",
+      "width": 390
+    },
+    {
+      "account": "ketoan",
+      "route": "#/app/reports",
+      "width": 390
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/dashboard",
+      "width": 1440
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/timetable",
+      "width": 1440
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/attendance",
+      "width": 1440
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/dashboard",
+      "width": 768
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/timetable",
+      "width": 768
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/attendance",
+      "width": 768
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/dashboard",
+      "width": 390
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/timetable",
+      "width": 390
+    },
+    {
+      "account": "gv1",
+      "route": "#/app/attendance",
+      "width": 390
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/dashboard",
+      "width": 1440
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/timetable",
+      "width": 1440
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/attendance",
+      "width": 1440
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/dashboard",
+      "width": 768
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/timetable",
+      "width": 768
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/attendance",
+      "width": 768
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/dashboard",
+      "width": 390
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/timetable",
+      "width": 390
+    },
+    {
+      "account": "gv2",
+      "route": "#/app/attendance",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br1",
+      "width": 1440
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br1",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br1",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br2",
+      "width": 1440
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br2",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br2",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br3",
+      "width": 1440
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br3",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br3",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br4",
+      "width": 1440
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br4",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/co-so/br4",
+      "width": 320
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co1",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co2",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co3",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co4",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co5",
+      "width": 390
+    },
+    {
+      "account": "public",
+      "route": "/khoa-hoc/co6",
+      "width": 390
+    }
+  ],
   "results": [
     {
       "id": "UI01",
@@ -136,9 +803,129 @@
       "id": "UI13",
       "name": "Màn hình khóa học rỗng vẫn hiển thị, dữ liệu trình duyệt cũ không phá trang",
       "status": "Passed"
+    },
+    {
+      "id": "UI24",
+      "name": "Bộ lọc khóa học, tìm kiếm và trạng thái không có kết quả",
+      "status": "Passed"
+    },
+    {
+      "id": "UI25",
+      "name": "Chi tiết cả 6 khóa học, học phí, lịch lớp và mã khóa không tồn tại",
+      "status": "Passed"
+    },
+    {
+      "id": "UI26",
+      "name": "Nút chi tiết và tư vấn giữ đúng khóa đã chọn khi đổi route",
+      "status": "Passed"
+    },
+    {
+      "id": "UI27",
+      "name": "Giảng viên lấy từ dữ liệu thật, không công khai người đã nghỉ và thông tin liên hệ",
+      "status": "Passed"
+    },
+    {
+      "id": "UI28",
+      "name": "Trang công khai ở 320/390/768/1440px, menu mobile, Escape và FAQ",
+      "status": "Passed"
+    },
+    {
+      "id": "UI29",
+      "name": "Lọc lịch khai giảng theo cả 4 cơ sở và trạng thái lớp rỗng",
+      "status": "Passed"
+    },
+    {
+      "id": "UI30",
+      "name": "Bài thử: chặn câu bỏ trống, giữ đáp án khi quay lại, chấm 0 điểm và làm lại",
+      "status": "Passed"
+    },
+    {
+      "id": "UI31",
+      "name": "Bài thử 10 điểm với mục tiêu IELTS dẫn đúng khóa và form tư vấn",
+      "status": "Passed"
+    },
+    {
+      "id": "UI32",
+      "name": "Hoàn thành bài thử trên màn hình 320px, xem đáp án và gợi ý B2",
+      "status": "Passed"
+    },
+    {
+      "id": "UI33",
+      "name": "Hiện/ẩn mật khẩu, đăng nhập bằng Enter và nhận diện cổng nhân viên",
+      "status": "Passed"
+    },
+    {
+      "id": "UI34",
+      "name": "Toàn bộ màn hình theo 5 tài khoản ở desktop, tablet và điện thoại",
+      "status": "Passed"
+    },
+    {
+      "id": "UI35",
+      "name": "Cả 5 tab danh mục và các dialog tạo mới trên điện thoại, hủy không ghi dữ liệu",
+      "status": "Passed"
+    },
+    {
+      "id": "UI36",
+      "name": "Từ chối yêu cầu qua dialog mobile có lý do và xác nhận",
+      "status": "Passed"
+    },
+    {
+      "id": "UI37",
+      "name": "Nút in báo cáo, chế độ in ẩn điều hướng và tạo được PDF",
+      "status": "Passed"
+    },
+    {
+      "id": "UI38",
+      "name": "Điều hướng tuần và lọc cơ sở của thời khóa biểu trên điện thoại",
+      "status": "Passed"
+    },
+    {
+      "id": "UI39",
+      "name": "Nhân viên cập nhật trạng thái tư vấn và dữ liệu giữ nguyên khi tải lại",
+      "status": "Passed"
+    },
+    {
+      "id": "UI40",
+      "name": "Thanh điều hướng không che tiến độ và phần đầu kết quả bài thử",
+      "status": "Passed"
+    },
+    {
+      "id": "UI41",
+      "name": "Trang riêng 4 cơ sở, bản đồ đúng địa chỉ và bố cục 320–1440px",
+      "status": "Passed"
+    },
+    {
+      "id": "UI42",
+      "name": "Tư vấn từ lớp giữ khóa/cơ sở/lớp, lưu giờ liên hệ và hiển thị xác nhận",
+      "status": "Passed"
+    },
+    {
+      "id": "UI43",
+      "name": "Bài luyện thử của 6 chương trình có phản hồi và tải đúng tài liệu",
+      "status": "Passed"
+    },
+    {
+      "id": "UI44",
+      "name": "URL công khai có tiêu đề và chia sẻ riêng, liên kết cũ còn hoạt động",
+      "status": "Passed"
+    },
+    {
+      "id": "UI45",
+      "name": "Tạm dừng chuyển động được ghi nhớ và tôn trọng thiết lập giảm chuyển động",
+      "status": "Passed"
+    },
+    {
+      "id": "UI46",
+      "name": "Lớp vừa đóng đăng ký khi đang điền form được cảnh báo, không tự đổi thành tư vấn chung",
+      "status": "Passed"
+    },
+    {
+      "id": "UI47",
+      "name": "Chế độ vận hành ẩn tài khoản/reset demo và giữ cấu hình liên hệ sau đăng nhập",
+      "status": "Passed"
     }
   ],
-  "total": 27,
-  "passed": 27,
+  "total": 51,
+  "passed": 51,
   "failed": 0
 }
