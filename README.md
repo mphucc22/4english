@@ -8,8 +8,6 @@ Giao diện được thiết kế lại theo hướng xanh dương, lấy cảm 
 
 Website có trang riêng từng cơ sở và Google Maps, tư vấn giữ đúng lớp/cơ sở, bài học mẫu, trang liên hệ và chế độ vận hành. Xem [cách cập nhật vị trí, liên hệ và chạy bản vận hành](docs/GIAO_DIEN_MOI.md#bản-đồ-và-thông-tin-cơ-sở). Sau khi cập nhật mã máy chủ, dừng terminal cũ rồi chạy lại `npm run dev`.
 
-Dự án quản lý đào tạo trung tâm ngoại ngữ, sửa từ repository `anthanhphan180506-byte/abc-english`, commit gốc `48407496124d5fe4e44f332259b43665f02a2de3`.
-
 React là giao diện; Node.js là máy chủ; SQLite là dữ liệu dùng chung. Bản này chạy cục bộ và có dữ liệu mẫu để bảo vệ bài tập. Không còn lưu nghiệp vụ bằng localStorage, không đăng nhập bằng cách tìm mật khẩu trên giao diện.
 
 ## Chạy trong Visual Studio Code (Windows)
