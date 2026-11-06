@@ -1,4 +1,4 @@
-# Kế hoạch kiểm thử ABC English 2.1
+# Kế hoạch kiểm thử 4ENGLISH 2.1
 
 ## Mục tiêu và phạm vi
 
