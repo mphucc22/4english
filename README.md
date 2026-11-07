@@ -1,5 +1,7 @@
 # 4ENGLISH — DT06, bản hoàn thiện 2.1
 
+Mã nguồn: [mphucc22/4english trên GitHub](https://github.com/mphucc22/4english). Xem [README trên nhánh main](https://github.com/mphucc22/4english/blob/main/README.md) để đọc bản hiện tại; các trang gắn với một commit cũ giữ nội dung tại thời điểm commit đó.
+
 Đã bổ sung quản lý theo cơ sở: tài khoản **Quản trị toàn hệ thống** quản lý chung; tài khoản **Quản lý cơ sở**, ghi danh, kế toán và giáo viên chỉ thao tác trong phạm vi được giao. Xem [hướng dẫn quản lý từng cơ sở](docs/QUAN_LY_CO_SO.md) để tạo tài khoản, giao cơ sở và nâng cấp dữ liệu cũ.
 
 Hồ sơ giáo viên và tài khoản đăng nhập đã được đồng bộ tên, cơ sở công tác và trạng thái truy cập; xem [hướng dẫn giáo viên và tài khoản](docs/QUAN_LY_GIAO_VIEN.md).
@@ -39,7 +41,7 @@ Nếu không sao chép CSDL, bản mới tạo dữ liệu mẫu riêng. Bản 2
 
 | Tên đăng nhập | Vai trò                  | Mật khẩu ban đầu |
 | ------------- | ------------------------ | ---------------- |
-| quanly        | Quản lý đào tạo          | 123456           |
+| quanly        | Quản trị toàn hệ thống   | 123456           |
 | ghidanh       | Nhân viên ghi danh       | 123456           |
 | ketoan        | Kế toán                  | 123456           |
 | gv1           | Giáo viên Nguyễn Thu Hà  | 123456           |
@@ -103,7 +105,7 @@ npm run build
 npm run test:browser
 ```
 
-Kiểm thử chạy trên CSDL tạm, không sửa CSDL làm việc. Kết quả browser và ảnh màn hình được ghi vào `test-results`. Xem báo cáo thực thi được đóng gói ở `docs/BAO_CAO_KIEM_THU.md`.
+Kiểm thử chạy trên CSDL tạm, không sửa CSDL làm việc. Kết quả browser và ảnh màn hình được ghi vào `test-results`. Xem [chỉ dẫn kết quả mới nhất và báo cáo lịch sử](test-results/README.md), cùng [báo cáo thực thi](docs/BAO_CAO_KIEM_THU.md).
 
 ## Tài liệu trong ZIP
 
